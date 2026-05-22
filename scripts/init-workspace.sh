@@ -26,10 +26,15 @@ TEMPLATE="$LAB_APP_ROOT/templates/intake-workspace"
 mkdir -p "$DEST"
 cp -R "$TEMPLATE/.cursor" "$DEST/" 2>/dev/null || mkdir -p "$DEST/.cursor/rules"
 cp "$TEMPLATE/.cursor/rules/intake-first.mdc" "$DEST/.cursor/rules/"
+mkdir -p "$DEST/.claude" "$DEST/.agents/workflows" "$DEST/docs" "$DEST/process"
+cp "$TEMPLATE/.claude/CLAUDE.md" "$DEST/CLAUDE.md" 2>/dev/null || true
+cp "$TEMPLATE/.agents/agents.md" "$DEST/.agents/agents.md" 2>/dev/null || true
+cp "$TEMPLATE/.agents/workflows/intake-first.md" "$DEST/.agents/workflows/intake-first.md" 2>/dev/null || true
 mkdir -p "$DEST/docs" "$DEST/process"
 cp "$TEMPLATE/docs/INTAKE.md" "$DEST/docs/"
 cp "$TEMPLATE/README.md" "$DEST/README.md"
 cp "$LAB_APP_ROOT/process/INTAKE.md" "$DEST/process/INTAKE.md"
+cp "$LAB_APP_ROOT/process/PLATFORMS.md" "$DEST/process/PLATFORMS.md" 2>/dev/null || true
 
 # Replace placeholder in copied files
 date_str="$(date +%Y-%m-%d)"
@@ -43,6 +48,6 @@ done < <(find "$DEST" -type f -print0)
 echo "Intake workspace ready: $DEST"
 echo ""
 echo "Next:"
-echo "  1. Open $DEST in Cursor (Agent mode)"
+echo "  1. Open $DEST in Cursor, Claude Code, or Antigravity"
 echo "  2. Director will ask: platform (iOS / macOS / both) + app idea"
 echo "  3. After answers, from Lab App: ./scripts/new-app.sh $APP_NAME ios|macos"

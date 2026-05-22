@@ -10,7 +10,7 @@
    ./scripts/new-app.sh MyApp ios
    ```
 
-4. Open the new folder `../MyApp/` in Cursor (separate workspace).
+4. Open the new folder `../MyApp/` in Cursor, Claude Code, or Antigravity (separate workspace).
 5. Edit `docs/KICKOFF.md` — objective, guardrails, definition of done.
 6. Approve phase progression in `docs/STATUS.md` (Director or you).
 

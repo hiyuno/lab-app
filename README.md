@@ -13,11 +13,13 @@ Meta-repository for creating **iOS** and **macOS** apps with a repeatable, agent
 | Any agent in Lab App | [AGENTS.md](AGENTS.md) |
 | Any agent in an app repo | `docs/STATUS.md` → `docs/KICKOFF.md` → `docs/SKILLS.md` |
 
-Sync all skills into an app repo:
+Sync all skills into an app repo (**Cursor + Claude Code + Antigravity**):
 
 ```bash
 ./scripts/sync-project-skills.sh ../MyApp
 ```
+
+IDE paths: [process/PLATFORMS.md](process/PLATFORMS.md).
 
 ## Design agent libraries
 
@@ -75,7 +77,7 @@ Details: [process/APPSTORE_AGENTS.md](process/APPSTORE_AGENTS.md). Auto-installe
 ./scripts/init-workspace.sh Gifty
 ```
 
-Open `../Gifty` in Cursor (**Agent** mode, not Plan). First questions: iOS / macOS / both, then your app idea.
+Open `../Gifty` in **Cursor** (Agent mode), **Claude Code**, or **Antigravity**. First questions: iOS / macOS / both, then your app idea.
 
 **Step 2 — Bootstrap** (from Lab App, after intake):
 
@@ -93,9 +95,10 @@ Lab App/
 ├── process/            # Phases, checklist, handoffs
 ├── templates/          # app-docs + ios-xcode + macos-swiftpm
 ├── roles/              # Role prompts (copied into each new app)
-├── .cursor/rules/      # Agent guardrails
-├── .cursor/skills/     # new-app, director-orchestrate, execute-backlog-ticket
-└── scripts/            # new-app.sh, sync-status.sh
+├── .cursor/rules/      # Cursor guardrails
+├── .cursor/skills/     # Source of truth → synced to .claude/ and .agents/
+├── templates/platform/ # CLAUDE.md, agents.md for app repos
+└── scripts/            # new-app.sh, sync-project-skills.sh
 ```
 
 ## Versioning apps

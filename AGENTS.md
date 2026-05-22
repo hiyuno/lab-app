@@ -2,7 +2,9 @@
 
 Process hub for iOS and macOS apps. When working **inside a spawned app**, always read that app's `docs/STATUS.md` and `docs/KICKOFF.md` first.
 
-**Director (Orchestrator):** read [process/SKILLS_REGISTRY.md](process/SKILLS_REGISTRY.md) and invoke skills by name from `.cursor/skills/`. Use skill **`director-orchestrate`** every session.
+**Supported IDEs:** Cursor (`.cursor/`), Claude Code (`.claude/` + `CLAUDE.md`), Antigravity (`.agents/`). Same skill names in each — see [process/PLATFORMS.md](process/PLATFORMS.md).
+
+**Director (Orchestrator):** read [process/SKILLS_REGISTRY.md](process/SKILLS_REGISTRY.md) and invoke skills by name from the active IDE's skills folder. Use skill **`director-orchestrate`** every session.
 
 ## Roles
 

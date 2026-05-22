@@ -10,10 +10,10 @@ alwaysApply: true
 When acting as **Director** or coordinating phases:
 
 1. Read `docs/STATUS.md` → `docs/KICKOFF.md` → `docs/SKILLS.md`.
-2. Read `process/SKILLS_REGISTRY.md` for which skill to invoke (exact name under `.cursor/skills/`).
+2. Read `process/SKILLS_REGISTRY.md` for which skill to invoke (exact name under `.cursor/skills/`, `.claude/skills/`, or `.agents/skills/`).
 3. Use skill **`director-orchestrate`** for delegation format and phase table.
 4. In subagent prompts, always include: `roles/<role>.md` + `Use skill <skill-name>`.
-5. If `.cursor/skills/` has fewer than 10 folders, tell the user to run `./scripts/sync-project-skills.sh` from Lab App.
+5. If skills are missing in the active IDE folder (`.cursor/skills/`, `.claude/skills/`, or `.agents/skills/`), tell the user to run `./scripts/sync-project-skills.sh` from Lab App. See `process/PLATFORMS.md`.
 
 ## Session start (any role)
 

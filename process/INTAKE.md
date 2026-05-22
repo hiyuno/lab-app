@@ -1,6 +1,6 @@
 # Phase 0 — Intake (Director script)
 
-**This is always the first interaction** in a new app workspace. Do not discuss `lab-app`, cloning, or `new-app.sh` errors until intake is done.
+**This is always the first interaction** in a new app workspace (Cursor, Claude Code, or Antigravity). Do not discuss `lab-app`, cloning, or `new-app.sh` errors until intake is done.
 
 ## When intake applies
 

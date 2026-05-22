@@ -8,7 +8,7 @@ description: >-
 
 # Director orchestrate
 
-You are the **Orchestrator**. You have access to every skill in `.cursor/skills/` when this repo was set up with `install-agents.sh` or `sync-project-skills.sh`.
+You are the **Orchestrator**. Skills live in **`.cursor/skills/`** (Cursor), **`.claude/skills/`** (Claude Code), or **`.agents/skills/`** (Antigravity) — same names after `install-agents.sh` or `sync-project-skills.sh`. See `process/PLATFORMS.md`.
 
 ## Phase 0 — Intake first (new apps)
 
@@ -59,7 +59,7 @@ If `process/SKILLS_REGISTRY.md` is missing, run `scripts/sync-project-skills.sh`
 
 ### Phase 8 — targeted App Store (one at a time)
 
-Use [process/SKILLS_REGISTRY.md](../../process/SKILLS_REGISTRY.md) § App Store review skills, or agent `.cursor/app-store-agents/appstore-full-audit.md` for full pass.
+Use [process/SKILLS_REGISTRY.md](../../process/SKILLS_REGISTRY.md) § App Store review skills, or `appstore-full-audit.md` in `.cursor/app-store-agents/`, `.claude/agents/`, or `.agents/agents/` for full pass.
 
 ## How to delegate (required format)
 
@@ -67,7 +67,7 @@ When spawning a subagent or continuing as another role, your prompt **must** inc
 
 ```text
 Role: Read roles/<role>.md
-Skill: Invoke skill <exact-skill-name>. Follow .cursor/skills/<exact-skill-name>/SKILL.md
+Skill: Invoke skill <exact-skill-name>. Follow <skills-dir>/<exact-skill-name>/SKILL.md (.cursor/skills, .claude/skills, or .agents/skills)
 Context: docs/KICKOFF.md guardrails, docs/BACKLOG.md ticket P0-X
 Output: <file path>
 Do not change scope outside the ticket.
@@ -114,6 +114,6 @@ Always set:
 
 ## Stop and escalate
 
-- Skill missing from `.cursor/skills/` → run sync script; do not guess.
+- Skill missing from the active skills folder → run `sync-project-skills.sh`; do not guess.
 - P0 audit item open → no App Store submit.
 - No `credentials.local.md` → skip `app-store-connect`; human uses ASC web.

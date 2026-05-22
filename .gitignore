@@ -8,3 +8,9 @@ __pycache__/
 xcuserdata/
 .build/
 .swiftpm/
+
+# Synced copies when running sync-project-skills.sh on Lab App itself (app repos should commit these)
+.claude/skills/
+.claude/agents/
+.agents/skills/
+.agents/agents/

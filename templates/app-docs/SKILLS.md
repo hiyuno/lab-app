@@ -15,13 +15,23 @@
 | 6 Build data | `swiftdata-pro` |
 | 8 App Store | `app-store-release` → `apple-app-review` / `app-store-connect` |
 
-All skills are under `.cursor/skills/`. List installed:
+Skills are installed for **Cursor**, **Claude Code**, and **Antigravity** (same names):
+
+| IDE | Path |
+|-----|------|
+| Cursor | `.cursor/skills/<name>/SKILL.md` |
+| Claude Code | `.claude/skills/<name>/SKILL.md` |
+| Antigravity | `.agents/skills/<name>/SKILL.md` |
+
+See [process/PLATFORMS.md](../process/PLATFORMS.md).
+
+List installed (Cursor):
 
 ```bash
 ls .cursor/skills
 ```
 
-Refresh from Lab App:
+Refresh all platforms from Lab App:
 
 ```bash
 /path/to/lab-app/scripts/sync-project-skills.sh .

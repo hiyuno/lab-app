@@ -4,16 +4,22 @@ New app workspace — **intake not finished yet**.
 
 ## For you (human)
 
-Open this folder in Cursor (Agent mode, not Plan).  
+Open this folder in **Cursor** (Agent mode), **Claude Code**, or **Antigravity**.
+
 The Director will ask:
 
-1. **Platform** — iOS, macOS, or both  
-2. **App idea** — what you're building  
+1. **Platform** — iOS, macOS, or both
+2. **App idea** — what you're building
 
 ## For the agent
 
-Read `docs/INTAKE.md` and `.cursor/rules/intake-first.mdc`.  
-Follow Lab App `process/INTAKE.md`.
+| IDE | Intake instructions |
+|-----|---------------------|
+| Cursor | `.cursor/rules/intake-first.mdc` |
+| Claude Code | `CLAUDE.md` |
+| Antigravity | `.agents/workflows/intake-first.md` |
+
+Also read `docs/INTAKE.md` and `process/INTAKE.md`.
 
 After intake, run from sibling **Lab App** repo:
 
