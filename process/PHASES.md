@@ -15,7 +15,13 @@
 ## Phase details
 
 ### 0 — Intake
-Capture idea, constraints, stack (`ios` or `macos`), and non-goals. No code required.
+
+Director asks **first** (before lab-app / scripts):
+
+1. **Platform:** iOS, macOS, or both? (both → usually scaffold iOS first)
+2. **App idea:** what, for whom, which problem
+
+Record in `docs/INTAKE.md`. Then `init-workspace.sh` + `new-app.sh` from Lab App. See [INTAKE.md](INTAKE.md).
 
 ### 1 — Kickoff
 Fill `KICKOFF.md`: objective, guardrails, current state, next steps, milestone definition of done.

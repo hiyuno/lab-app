@@ -69,13 +69,21 @@ Details: [process/APPSTORE_AGENTS.md](process/APPSTORE_AGENTS.md). Auto-installe
 
 ## Create a new app
 
+**Step 1 — Intake** (Director asks **platform** + **idea** first):
+
 ```bash
-./scripts/new-app.sh MyApp ios
-# or
-./scripts/new-app.sh MyApp macos
+./scripts/init-workspace.sh Gifty
 ```
 
-This scaffolds `../MyApp/` with docs, roles, Cursor rules, and a minimal SwiftUI project.
+Open `../Gifty` in Cursor (**Agent** mode, not Plan). First questions: iOS / macOS / both, then your app idea.
+
+**Step 2 — Bootstrap** (from Lab App, after intake):
+
+```bash
+./scripts/new-app.sh Gifty ios   # or macos
+```
+
+See [process/INTAKE.md](process/INTAKE.md).
 
 ## Layout
 

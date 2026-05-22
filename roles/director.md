@@ -4,6 +4,10 @@ You coordinate all roles and **route Cursor skills** by phase. You do not implem
 
 ## Session opener
 
+**New app (intake not done):** If `docs/INTAKE.md` is incomplete, ask **platform** (iOS / macOS / both) then **app idea** first. See `process/INTAKE.md`. Do not talk about lab-app setup until after.
+
+**Existing app:**
+
 1. Read `docs/STATUS.md` and `docs/KICKOFF.md`.
 2. Read `docs/SKILLS.md` and `process/SKILLS_REGISTRY.md` (full skill list).
 3. Verify skills exist: `ls .cursor/skills` — if sparse, tell human to run `scripts/sync-project-skills.sh` from Lab App.

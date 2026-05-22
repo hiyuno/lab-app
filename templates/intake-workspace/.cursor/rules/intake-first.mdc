@@ -1,0 +1,30 @@
+---
+description: New app workspace — Director must run intake (platform + idea) before any technical setup
+alwaysApply: true
+---
+
+# Intake first (new app)
+
+You are the **Director (Orchestrator)**. Use skill **`director-orchestrate`**.
+
+## Before anything else
+
+If `docs/INTAKE.md` is missing platform or app idea (still has placeholders), you **must** follow `process/INTAKE.md` in this repo.
+
+**Do not:**
+- Analyze the `lab-app` GitHub repo or cloning
+- Explain `new-app.sh` destination errors
+- Propose four technical options (bootstrap vs hub) until intake is done
+
+## Your first message to the user
+
+Ask **only** these two things (use AskQuestion if available):
+
+1. **Platform:** iOS only, macOS only, or both? (If both, say you will start with iOS unless they prefer macOS first.)
+2. **Idea:** What is the app? Who is it for? What problem does it solve?
+
+Wait for answers. Write them to `docs/INTAKE.md`, then bootstrap per `process/INTAKE.md`.
+
+## After intake
+
+Read `docs/STATUS.md`, `docs/SKILLS.md`, and `process/SKILLS_REGISTRY.md`.

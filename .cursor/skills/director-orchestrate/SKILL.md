@@ -10,9 +10,23 @@ description: >-
 
 You are the **Orchestrator**. You have access to every skill in `.cursor/skills/` when this repo was set up with `install-agents.sh` or `sync-project-skills.sh`.
 
-## Mandatory reads (in order)
+## Phase 0 — Intake first (new apps)
 
-1. `docs/STATUS.md`
+If `docs/INTAKE.md` has empty **Platform** or **App idea**, or there is no `docs/STATUS.md` yet:
+
+1. **Do not** discuss lab-app cloning, GitHub, or `new-app.sh` errors.
+2. Ask the user **only**:
+   - **Q1:** Platform — **iOS**, **macOS**, or **both**? (If both: default scaffold iOS first unless they say otherwise.)
+   - **Q2:** **App idea** — what is it, for whom, what problem?
+3. Save answers in `docs/INTAKE.md`.
+4. Run `../Lab App/scripts/new-app.sh <AppName> ios|macos` from Lab App (intake-only folders are supported).
+5. Copy intake into `docs/KICKOFF.md`, then continue at phase 1.
+
+Full script: [process/INTAKE.md](../../process/INTAKE.md).
+
+## Mandatory reads (after intake / existing apps)
+
+1. `docs/STATUS.md` (if missing, you are in phase 0)
 2. `docs/KICKOFF.md`
 3. `docs/SKILLS.md` (short map)
 4. [process/SKILLS_REGISTRY.md](../../process/SKILLS_REGISTRY.md) (full skill catalog)

@@ -28,9 +28,27 @@ if [[ "$STACK" != "ios" && "$STACK" != "macos" ]]; then
 fi
 
 DEST="$GITHUB_ROOT/$APP_NAME"
+
+is_intake_only_workspace() {
+  local dir="$1"
+  [[ -d "$dir/docs" ]] || return 1
+  [[ -f "$dir/docs/INTAKE.md" ]] || return 1
+  # Not yet scaffolded: no Xcode project and no SwiftPM manifest
+  [[ ! -d "$dir/${APP_NAME}.xcodeproj" ]] && [[ ! -f "$dir/Package.swift" ]]
+}
+
 if [[ -e "$DEST" ]]; then
-  echo "Error: destination already exists: $DEST"
-  exit 1
+  if is_intake_only_workspace "$DEST"; then
+    echo "→ Scaffolding into existing intake workspace: $DEST"
+    SCAFFOLD_INTO_EXISTING=true
+  else
+    echo "Error: destination already exists and is not intake-only: $DEST"
+    echo "  Use a new name, remove the folder, or run init-workspace.sh for intake-only setup."
+    exit 1
+  fi
+else
+  SCAFFOLD_INTO_EXISTING=false
+  mkdir -p "$DEST"
 fi
 
 replace_in_tree() {
@@ -82,7 +100,9 @@ copy_roles_and_cursor() {
 
 echo "Creating $DEST ($STACK)..."
 
-mkdir -p "$DEST"
+if [[ "${SCAFFOLD_INTO_EXISTING:-false}" != "true" ]]; then
+  mkdir -p "$DEST"
+fi
 
 if [[ "$STACK" == "ios" ]]; then
   cp -R "$LAB_APP_ROOT/templates/ios-xcode/." "$DEST/"
