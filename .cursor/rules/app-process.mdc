@@ -1,28 +1,34 @@
 ---
-description: Lab App and spawned app process — read STATUS first, backlog-only implementation
+description: Lab App and app repos — STATUS first, Director uses SKILLS registry, backlog-only code
 alwaysApply: true
 ---
 
 # App creation process
 
-## Session start
+## Director / Orchestrator
 
-1. If working in an **app repo** (has `docs/STATUS.md`): read `docs/STATUS.md`, then `docs/KICKOFF.md`.
-2. If working in **Lab App** (meta-repo): read `AGENTS.md` and follow the user's phase (scaffold, docs, scripts).
+When acting as **Director** or coordinating phases:
+
+1. Read `docs/STATUS.md` → `docs/KICKOFF.md` → `docs/SKILLS.md`.
+2. Read `process/SKILLS_REGISTRY.md` for which skill to invoke (exact name under `.cursor/skills/`).
+3. Use skill **`director-orchestrate`** for delegation format and phase table.
+4. In subagent prompts, always include: `roles/<role>.md` + `Use skill <skill-name>`.
+5. If `.cursor/skills/` has fewer than 10 folders, tell the user to run `./scripts/sync-project-skills.sh` from Lab App.
+
+## Session start (any role)
+
+1. App repo: read `docs/STATUS.md`, then `docs/KICKOFF.md`.
+2. Lab App meta-repo: read `AGENTS.md` and follow the user's task.
 
 ## Scope
 
 - Implement only work tied to an open ticket in `docs/BACKLOG.md`.
-- Do not change product guardrails in `KICKOFF.md` without Director approval; log decisions in `STATUS.md`.
+- Do not change `KICKOFF.md` guardrails without Director approval (log in `STATUS.md`).
 
 ## Session end
 
-Update `docs/STATUS.md` with phase, next action, blockers, and a one-line last-session summary.
+Update `docs/STATUS.md` with phase, active role, **active skill**, next action, last session summary.
 
 ## Handoffs
 
-Follow order in `AGENTS.md`: Spec → UX → Content → Architecture → Engineering → Director.
-
-## Versioning
-
-Use git branches per app. Do not create duplicate app folders for new versions.
+Follow `AGENTS.md`: Spec → UX → Content → Architecture → Engineering → Director → (QA) → App Store.

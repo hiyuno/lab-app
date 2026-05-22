@@ -2,7 +2,8 @@
 
 **Phase:** `1-kickoff`  
 **Active role:** Director  
-**Next action:** Fill `KICKOFF.md` objective and guardrails with human input.
+**Active skill:** `director-orchestrate`  
+**Next action:** Fill `KICKOFF.md` objective and guardrails with human input. Read `docs/SKILLS.md` before delegating.
 
 ## Blockers
 

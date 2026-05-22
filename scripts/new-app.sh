@@ -73,24 +73,11 @@ copy_docs() {
 }
 
 copy_roles_and_cursor() {
-  mkdir -p "$DEST/roles" "$DEST/.cursor/rules" "$DEST/.cursor/skills"
+  mkdir -p "$DEST/roles"
   cp "$LAB_APP_ROOT/roles/"*.md "$DEST/roles/"
-  cp "$LAB_APP_ROOT/.cursor/rules/"*.mdc "$DEST/.cursor/rules/"
   cp "$LAB_APP_ROOT/AGENTS.md" "$DEST/AGENTS.md"
-  # Core Lab App skills
-  for skill in director-orchestrate execute-backlog-ticket new-app design-with-claude libre-uiux swift-agent-skills ios-dev-guide app-store-release; do
-    if [[ -d "$LAB_APP_ROOT/.cursor/skills/$skill" ]]; then
-      rm -rf "$DEST/.cursor/skills/$skill"
-      cp -R "$LAB_APP_ROOT/.cursor/skills/$skill" "$DEST/.cursor/skills/$skill"
-    fi
-  done
-  # UI UX Pro Max (optional; install in Lab App first via install-design-agents.sh)
-  for skill in ui-ux-pro-max swiftui-pro swift-concurrency-pro swiftdata-pro; do
-    if [[ -d "$LAB_APP_ROOT/.cursor/skills/$skill" ]]; then
-      rm -rf "$DEST/.cursor/skills/$skill"
-      cp -R "$LAB_APP_ROOT/.cursor/skills/$skill" "$DEST/.cursor/skills/$skill"
-    fi
-  done
+  # All skills + orchestrator docs + rules
+  "$LAB_APP_ROOT/scripts/sync-project-skills.sh" "$DEST"
 }
 
 echo "Creating $DEST ($STACK)..."

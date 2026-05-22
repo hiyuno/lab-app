@@ -2,13 +2,15 @@
 
 Process hub for iOS and macOS apps. When working **inside a spawned app**, always read that app's `docs/STATUS.md` and `docs/KICKOFF.md` first.
 
+**Director (Orchestrator):** read [process/SKILLS_REGISTRY.md](process/SKILLS_REGISTRY.md) and invoke skills by name from `.cursor/skills/`. Use skill **`director-orchestrate`** every session.
+
 ## Roles
 
 ### 1) Director (PM + Tech Lead)
 **Owner:** coordination, priority, final scope decisions.  
 **Inputs:** PRD, backlog, design, architecture, implementation status.  
 **Outputs:** `docs/STATUS.md`, sequencing, one clear next action.  
-**Skill:** `director-orchestrate`
+**Skill:** `director-orchestrate` — see [process/SKILLS_REGISTRY.md](process/SKILLS_REGISTRY.md) for all skills
 
 ### 2) Product Spec
 **Owner:** executable product specs.  

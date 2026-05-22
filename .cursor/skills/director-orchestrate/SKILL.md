@@ -1,53 +1,105 @@
 ---
 name: director-orchestrate
 description: >-
-  Orchestrates iOS/macOS app work as Director (PM + Tech Lead): reads STATUS and
-  KICKOFF, assigns one role per step, enforces handoff order, updates STATUS. Use when
-  coordinating agents, planning sprints, or when the user asks for Director or PM.
+  Orchestrates iOS/macOS app work as Director: reads STATUS, SKILLS registry, assigns
+  roles and named Cursor skills per phase, spawns subagents with skill+role prompts,
+  updates STATUS. Use when user says Director, orchestrator, PM, or start/continue the process.
 ---
 
 # Director orchestrate
 
-## Load context
+You are the **Orchestrator**. You have access to every skill in `.cursor/skills/` when this repo was set up with `install-agents.sh` or `sync-project-skills.sh`.
 
-1. [roles/director.md](../../roles/director.md)
-2. App repo: `docs/STATUS.md`, then `docs/KICKOFF.md`
-3. [AGENTS.md](../../AGENTS.md) handoff protocol
-4. [process/HANDOFFS.md](../../process/HANDOFFS.md) for phase I/O
+## Mandatory reads (in order)
 
-## Pick exactly one next action
+1. `docs/STATUS.md`
+2. `docs/KICKOFF.md`
+3. `docs/SKILLS.md` (short map)
+4. [process/SKILLS_REGISTRY.md](../../process/SKILLS_REGISTRY.md) (full skill catalog)
+5. [roles/director.md](../../roles/director.md)
+6. [AGENTS.md](../../AGENTS.md) handoff order
 
-| Phase | Assign to | Output |
-|-------|-----------|--------|
-| 1-kickoff | Director + human | `KICKOFF.md` complete |
-| 2-spec | Product Spec | `PRD.md`, P0 in `BACKLOG.md` |
-| 3-design | UX (ios/macos) + Brand | `SCREENS.md`, `COPY.md`; optional `ui-ux-pro-max`, `design-with-claude`, `libre-uiux` per [process/DESIGN_AGENTS.md](../../process/DESIGN_AGENTS.md) |
-| 4-architecture | Architect (ios/macos) | `ARCHITECTURE.md` |
-| 5-scaffold | Engineer | Green build |
-| 6-build | Engineer | One P0 ticket closed; iOS: `swiftui-pro` / `swift-concurrency-pro` / `swiftdata-pro` per [process/SWIFT_AGENTS.md](../../process/SWIFT_AGENTS.md) |
-| 4-architecture | Architect (iOS) | `ARCHITECTURE.md`; optional `ios-dev-guide` |
-| 7-alpha | QA | `QA.md` |
-| 8-appstore | App Store release (iOS) | `APPSTORE_AUDIT.md`, `APPSTORE_CHECKLIST.md`; [process/APPSTORE_AGENTS.md](../../process/APPSTORE_AGENTS.md) |
+If `process/SKILLS_REGISTRY.md` is missing, run `scripts/sync-project-skills.sh` from Lab App on this repo.
 
-Update `docs/STATUS.md`: **Phase**, **Active role**, **Next action**, **Handoff queue** table.
+## Phase → role → primary skill
 
-## Subagent use
+| Phase | Role file | Primary skill(s) | Output |
+|-------|-----------|------------------|--------|
+| 1-kickoff | `director.md` | — | `KICKOFF.md` |
+| 2-spec | `product-spec.md` | — | `PRD.md`, `BACKLOG.md` |
+| 3-design | `ux-ios.md` / `ux-macos.md` | `ui-ux-pro-max`, then `design-with-claude`, optional `libre-uiux` | `SCREENS.md`, `COPY.md` |
+| 4-architecture | `architect-ios.md` / `architect-macos.md` | `ios-dev-guide` (iOS), `swiftdata-pro` if persistence | `ARCHITECTURE.md` |
+| 5-scaffold | `engineer.md` | `new-app` (Lab App only) | green build |
+| 6-build | `engineer.md` | `execute-backlog-ticket` + ticket skill below | P0 closed |
+| 7-alpha | `engineer.md` / QA | — | `QA.md` |
+| 8-appstore | `appstore-release.md` | `app-store-release` → `apple-app-review` | `APPSTORE_AUDIT.md`, `APPSTORE_CHECKLIST.md` |
 
-- **explore** — readonly codebase discovery
-- **generalPurpose** — single P0 implementation with `roles/engineer.md`
-- **shell** — `swift build`, git, xcodebuild
+### Phase 6 — pick by ticket (one skill)
 
-Parent owns `STATUS.md` and backlog priority. Never run two roles that edit the same files in parallel.
+| Ticket needs | Skill |
+|--------------|-------|
+| SwiftUI screens | `swiftui-pro` |
+| async / concurrency | `swift-concurrency-pro` |
+| SwiftData | `swiftdata-pro` |
+| iOS norms / structure | `ios-dev-guide` |
 
-## Stop and escalate when
+### Phase 8 — targeted App Store (one at a time)
 
-- Missing acceptance criteria on active P0
-- Guardrail conflict with `KICKOFF.md`
-- Signing, entitlements, or Apple account blockers
+Use [process/SKILLS_REGISTRY.md](../../process/SKILLS_REGISTRY.md) § App Store review skills, or agent `.cursor/app-store-agents/appstore-full-audit.md` for full pass.
 
-## Session end template (STATUS.md)
+## How to delegate (required format)
 
-```markdown
-**Last session:** <date> — <role> completed <artifact>; <build status>.
-**Next action:** <single imperative>.
+When spawning a subagent or continuing as another role, your prompt **must** include:
+
+```text
+Role: Read roles/<role>.md
+Skill: Invoke skill <exact-skill-name>. Follow .cursor/skills/<exact-skill-name>/SKILL.md
+Context: docs/KICKOFF.md guardrails, docs/BACKLOG.md ticket P0-X
+Output: <file path>
+Do not change scope outside the ticket.
 ```
+
+Example:
+
+```text
+Role: roles/engineer.md
+Skill: swiftui-pro
+Ticket: P0-2 in docs/BACKLOG.md
+Output: implementation + note build in STATUS.md
+```
+
+## Subagent types (Cursor Task tool)
+
+| Type | Use for |
+|------|---------|
+| `explore` | Readonly codebase discovery |
+| `generalPurpose` | Spec, UX, architect, engineer with role+skill prompt |
+| `shell` | `swift build`, `xcodebuild`, git |
+
+You merge results and **only you** update `docs/STATUS.md` and backlog priority.
+
+## Record in STATUS.md
+
+Always set:
+
+- **Phase**
+- **Active role**
+- **Active skill:** `skill-name`
+- **Next action** (one imperative)
+- **Handoff queue** table
+
+## Install / refresh skills in this repo
+
+```bash
+# From Lab App meta-repo:
+./scripts/sync-project-skills.sh /path/to/this-app
+
+# Or full install:
+./scripts/install-agents.sh /path/to/this-app
+```
+
+## Stop and escalate
+
+- Skill missing from `.cursor/skills/` → run sync script; do not guess.
+- P0 audit item open → no App Store submit.
+- No `credentials.local.md` → skip `app-store-connect`; human uses ASC web.

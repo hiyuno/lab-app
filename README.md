@@ -9,9 +9,15 @@ Meta-repository for creating **iOS** and **macOS** apps with a repeatable, agent
 | Audience | First read |
 |----------|------------|
 | Human | [process/NEW_APP_CHECKLIST.md](process/NEW_APP_CHECKLIST.md) |
-| Director agent | [roles/director.md](roles/director.md) + skill `.cursor/skills/director-orchestrate/` |
+| **Director / Orchestrator** | [process/SKILLS_REGISTRY.md](process/SKILLS_REGISTRY.md) + skill `director-orchestrate` |
 | Any agent in Lab App | [AGENTS.md](AGENTS.md) |
-| Any agent in an app repo | App `docs/STATUS.md` then `docs/KICKOFF.md` |
+| Any agent in an app repo | `docs/STATUS.md` → `docs/KICKOFF.md` → `docs/SKILLS.md` |
+
+Sync all skills into an app repo:
+
+```bash
+./scripts/sync-project-skills.sh ../MyApp
+```
 
 ## Design agent libraries
 
