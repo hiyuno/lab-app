@@ -1,0 +1,28 @@
+---
+description: Lab App and spawned app process — read STATUS first, backlog-only implementation
+alwaysApply: true
+---
+
+# App creation process
+
+## Session start
+
+1. If working in an **app repo** (has `docs/STATUS.md`): read `docs/STATUS.md`, then `docs/KICKOFF.md`.
+2. If working in **Lab App** (meta-repo): read `AGENTS.md` and follow the user's phase (scaffold, docs, scripts).
+
+## Scope
+
+- Implement only work tied to an open ticket in `docs/BACKLOG.md`.
+- Do not change product guardrails in `KICKOFF.md` without Director approval; log decisions in `STATUS.md`.
+
+## Session end
+
+Update `docs/STATUS.md` with phase, next action, blockers, and a one-line last-session summary.
+
+## Handoffs
+
+Follow order in `AGENTS.md`: Spec → UX → Content → Architecture → Engineering → Director.
+
+## Versioning
+
+Use git branches per app. Do not create duplicate app folders for new versions.
