@@ -32,7 +32,6 @@ Or separately:
 ```
 
 Process docs: `process/DESIGN_AGENTS.md`, `process/SWIFT_AGENTS.md`, `process/APPSTORE_AGENTS.md`.
-```
 
 ## Licenses
 
