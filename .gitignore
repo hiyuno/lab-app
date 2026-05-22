@@ -1,5 +1,7 @@
 .DS_Store
 .tmp-repos/
+__pycache__/
+*.pyc
 *.xcuserstate
 xcuserdata/
 .build/
