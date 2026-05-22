@@ -78,7 +78,7 @@ copy_roles_and_cursor() {
   cp "$LAB_APP_ROOT/.cursor/rules/"*.mdc "$DEST/.cursor/rules/"
   cp "$LAB_APP_ROOT/AGENTS.md" "$DEST/AGENTS.md"
   # Core Lab App skills
-  for skill in director-orchestrate execute-backlog-ticket new-app design-with-claude libre-uiux swift-agent-skills ios-dev-guide; do
+  for skill in director-orchestrate execute-backlog-ticket new-app design-with-claude libre-uiux swift-agent-skills ios-dev-guide app-store-release; do
     if [[ -d "$LAB_APP_ROOT/.cursor/skills/$skill" ]]; then
       rm -rf "$DEST/.cursor/skills/$skill"
       cp -R "$LAB_APP_ROOT/.cursor/skills/$skill" "$DEST/.cursor/skills/$skill"
@@ -142,6 +142,12 @@ if ! git rev-parse --is-inside-work-tree &>/dev/null; then
   git init -q
   git add -A
   git commit -q -m "chore: scaffold $APP_NAME from Lab App ($STACK)"
+fi
+
+if [[ "$STACK" == "ios" ]]; then
+  echo "→ Installing App Store review skills (ios)..."
+  "$LAB_APP_ROOT/scripts/install-appstore-agents.sh" "$DEST"
+  cp "$LAB_APP_ROOT/roles/appstore-release.md" "$DEST/roles/" 2>/dev/null || true
 fi
 
 echo ""

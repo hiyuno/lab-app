@@ -1,4 +1,4 @@
-# External design agent libraries
+# External agent libraries
 
 Git submodules — update with `git submodule update --init --recursive`.
 
@@ -12,6 +12,8 @@ Git submodules — update with `git submodule update --init --recursive`.
 | [SwiftUI-Agent-Skill](SwiftUI-Agent-Skill/) | [twostraws/SwiftUI-Agent-Skill](https://github.com/twostraws/SwiftUI-Agent-Skill) | Installed as Cursor skill `swiftui-pro` |
 | [Swift-Concurrency-Agent-Skill](Swift-Concurrency-Agent-Skill/) | [twostraws/Swift-Concurrency-Agent-Skill](https://github.com/twostraws/Swift-Concurrency-Agent-Skill) | Cursor skill `swift-concurrency-pro` |
 | [SwiftData-Agent-Skill](SwiftData-Agent-Skill/) | [twostraws/SwiftData-Agent-Skill](https://github.com/twostraws/SwiftData-Agent-Skill) | Cursor skill `swiftdata-pro` |
+| [apple-app-review-skills](apple-app-review-skills/) | [cruisediary/apple-app-review-skills](https://github.com/cruisediary/apple-app-review-skills) | 31 App Store review checks |
+| [app-store-connect-skill](app-store-connect-skill/) | [sosteam65/app-store-connect-skill](https://github.com/sosteam65/app-store-connect-skill) | App Store Connect API |
 
 ## Install / refresh Cursor skills
 
@@ -26,6 +28,10 @@ Or separately:
 ```bash
 ./scripts/install-design-agents.sh
 ./scripts/install-swift-agents.sh
+./scripts/install-appstore-agents.sh
+```
+
+Process docs: `process/DESIGN_AGENTS.md`, `process/SWIFT_AGENTS.md`, `process/APPSTORE_AGENTS.md`.
 ```
 
 ## Licenses

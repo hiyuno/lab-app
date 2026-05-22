@@ -27,6 +27,7 @@ description: >-
 | 6-build | Engineer | One P0 ticket closed; iOS: `swiftui-pro` / `swift-concurrency-pro` / `swiftdata-pro` per [process/SWIFT_AGENTS.md](../../process/SWIFT_AGENTS.md) |
 | 4-architecture | Architect (iOS) | `ARCHITECTURE.md`; optional `ios-dev-guide` |
 | 7-alpha | QA | `QA.md` |
+| 8-appstore | App Store release (iOS) | `APPSTORE_AUDIT.md`, `APPSTORE_CHECKLIST.md`; [process/APPSTORE_AGENTS.md](../../process/APPSTORE_AGENTS.md) |
 
 Update `docs/STATUS.md`: **Phase**, **Active role**, **Next action**, **Handoff queue** table.
 

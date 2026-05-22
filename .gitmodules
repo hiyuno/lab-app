@@ -22,3 +22,9 @@
 [submodule "external/SwiftData-Agent-Skill"]
 	path = external/SwiftData-Agent-Skill
 	url = https://github.com/twostraws/SwiftData-Agent-Skill.git
+[submodule "external/apple-app-review-skills"]
+	path = external/apple-app-review-skills
+	url = https://github.com/cruisediary/apple-app-review-skills.git
+[submodule "external/app-store-connect-skill"]
+	path = external/app-store-connect-skill
+	url = https://github.com/sosteam65/app-store-connect-skill.git

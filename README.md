@@ -47,6 +47,20 @@ Details: [process/DESIGN_AGENTS.md](process/DESIGN_AGENTS.md).
 
 Details: [process/SWIFT_AGENTS.md](process/SWIFT_AGENTS.md).
 
+## App Store (iOS submit readiness)
+
+| Skill | Source |
+|-------|--------|
+| `apple-app-review` | [apple-app-review-skills](https://github.com/cruisediary/apple-app-review-skills) — 31 rejection checks |
+| `app-store-connect` | [app-store-connect-skill](https://github.com/sosteam65/app-store-connect-skill) — ASC API |
+| `app-store-release` | Lab App orchestrator |
+
+```bash
+./scripts/install-appstore-agents.sh   # included in install-agents.sh
+```
+
+Details: [process/APPSTORE_AGENTS.md](process/APPSTORE_AGENTS.md). Auto-installed for `new-app.sh MyApp ios`.
+
 ## Create a new app
 
 ```bash

@@ -10,6 +10,7 @@
 | 5 | Scaffold | Repo + green build | Engineer + `new-app.sh` |
 | 6 | Build loops | Closed P0 tickets | Engineer (batched) |
 | 7 | Alpha | `docs/QA.md`, P1 backlog | QA + Director |
+| 8 | App Store | `docs/APPSTORE_AUDIT.md`, `docs/APPSTORE_CHECKLIST.md` | App Store release (iOS) |
 
 ## Phase details
 
@@ -43,11 +44,20 @@ Dogfood with `docs/QA.md`. Log follow-ups as P1.
 **Batch B:** Engineering implementation.  
 **Batch C:** QA review and P1 triage.
 
+### 8 — App Store (iOS only)
+
+1. Run `apple-app-review` full audit → `docs/APPSTORE_AUDIT.md`.
+2. Fix P0 findings (phase 6 loops).
+3. Complete `docs/APPSTORE_CHECKLIST.md`.
+4. Optional: `app-store-connect` with API credentials for upload/submit.
+
+See [APPSTORE_AGENTS.md](APPSTORE_AGENTS.md).
+
 ## Future (v2)
 
 - Web stacks branch in templates
-- CI, TestFlight, Mac notarization
-- `fastlane` standardization
+- CI, Mac notarization (non-iOS)
+- `fastlane` standardization alongside ASC skill
 
 ## PR hygiene
 

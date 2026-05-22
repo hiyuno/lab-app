@@ -2,6 +2,8 @@
 .tmp-repos/
 __pycache__/
 *.pyc
+**/credentials.local.md
+*.p8
 *.xcuserstate
 xcuserdata/
 .build/

@@ -46,6 +46,13 @@ Process hub for iOS and macOS apps. When working **inside a spawned app**, alway
 **Inputs:** closed P0 tickets, build artifact.  
 **Outputs:** `docs/QA.md` checklist results.
 
+### 8) App Store release (iOS)
+**Owner:** App Store guideline compliance and submission readiness.  
+**Inputs:** `docs/QA.md`, architecture, monetization scope.  
+**Outputs:** `docs/APPSTORE_AUDIT.md`, `docs/APPSTORE_CHECKLIST.md`.  
+**Role file:** `roles/appstore-release.md`  
+**Skills:** `apple-app-review`, `app-store-connect`, `app-store-release` — see [process/APPSTORE_AGENTS.md](process/APPSTORE_AGENTS.md)
+
 ## Handoff protocol
 
 1. Spec defines behavior → `docs/BACKLOG.md`
