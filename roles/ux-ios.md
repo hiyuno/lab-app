@@ -38,6 +38,16 @@ Flows that follow Apple HIG, with clear hierarchy and complete UI states.
 - [ ] All P0 screens have state matrix
 - [ ] Engineering can implement without guessing layout or interaction
 
+## External design skills (phase 3)
+
+After drafting `docs/SCREENS.md`, Director may invoke:
+
+1. **`ui-ux-pro-max`** — design system / style (use SwiftUI stack in search).
+2. **`design-with-claude`** — `external/design-with-claude/commands/design-brief.md` + `mobile-specialist.md`, `accessibility-specialist.md`.
+3. **`libre-uiux`** — critique via `plugins/design-mastery` and `accessibility-compliance`.
+
+See [process/DESIGN_AGENTS.md](../process/DESIGN_AGENTS.md).
+
 ## References
 
 - [Apple HIG](https://developer.apple.com/design/human-interface-guidelines)

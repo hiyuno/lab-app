@@ -45,6 +45,16 @@ Desktop-native flows: window behavior, keyboard, menus, and clear visual hierarc
 - [ ] Keyboard focus and accessibility considered
 - [ ] Direct mapping to SwiftUI implementation
 
+## External design skills (phase 3)
+
+After drafting `docs/SCREENS.md`, Director may invoke:
+
+1. **`ui-ux-pro-max`** — design system / style (SwiftUI stack where applicable).
+2. **`design-with-claude`** — `design-brief`, `interaction-designer`, `visual-hierarchy-specialist`, `dark-mode-specialist`.
+3. **`libre-uiux`** — design-mastery + accessibility plugins.
+
+See [process/DESIGN_AGENTS.md](../process/DESIGN_AGENTS.md).
+
 ## References
 
 - [Apple HIG](https://developer.apple.com/design/human-interface-guidelines)

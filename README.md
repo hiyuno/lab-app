@@ -13,6 +13,25 @@ Meta-repository for creating **iOS** and **macOS** apps with a repeatable, agent
 | Any agent in Lab App | [AGENTS.md](AGENTS.md) |
 | Any agent in an app repo | App `docs/STATUS.md` then `docs/KICKOFF.md` |
 
+## Design agent libraries
+
+Integrated via git submodules + Cursor skills:
+
+| Library | Skill name |
+|---------|------------|
+| [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | `ui-ux-pro-max` |
+| [design-with-claude](https://github.com/imsaif/design-with-claude) | `design-with-claude` |
+| [LibreUIUX-Claude-Code](https://github.com/HermeticOrmus/LibreUIUX-Claude-Code) | `libre-uiux` |
+
+Install or refresh:
+
+```bash
+git submodule update --init --recursive
+./scripts/install-design-agents.sh
+```
+
+Details: [process/DESIGN_AGENTS.md](process/DESIGN_AGENTS.md).
+
 ## Create a new app
 
 ```bash

@@ -21,7 +21,7 @@ description: >-
 |-------|-----------|--------|
 | 1-kickoff | Director + human | `KICKOFF.md` complete |
 | 2-spec | Product Spec | `PRD.md`, P0 in `BACKLOG.md` |
-| 3-design | UX (ios/macos) + Brand | `SCREENS.md`, `COPY.md` |
+| 3-design | UX (ios/macos) + Brand | `SCREENS.md`, `COPY.md`; optional `ui-ux-pro-max`, `design-with-claude`, `libre-uiux` per [process/DESIGN_AGENTS.md](../../process/DESIGN_AGENTS.md) |
 | 4-architecture | Architect (ios/macos) | `ARCHITECTURE.md` |
 | 5-scaffold | Engineer | Green build |
 | 6-build | Engineer | One P0 ticket closed |

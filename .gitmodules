@@ -1,0 +1,9 @@
+[submodule "external/design-with-claude"]
+	path = external/design-with-claude
+	url = https://github.com/imsaif/design-with-claude.git
+[submodule "external/ui-ux-pro-max-skill"]
+	path = external/ui-ux-pro-max-skill
+	url = https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git
+[submodule "external/LibreUIUX-Claude-Code"]
+	path = external/LibreUIUX-Claude-Code
+	url = https://github.com/HermeticOrmus/LibreUIUX-Claude-Code.git

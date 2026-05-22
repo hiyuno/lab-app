@@ -73,10 +73,22 @@ copy_docs() {
 }
 
 copy_roles_and_cursor() {
-  mkdir -p "$DEST/roles" "$DEST/.cursor/rules"
+  mkdir -p "$DEST/roles" "$DEST/.cursor/rules" "$DEST/.cursor/skills"
   cp "$LAB_APP_ROOT/roles/"*.md "$DEST/roles/"
   cp "$LAB_APP_ROOT/.cursor/rules/"*.mdc "$DEST/.cursor/rules/"
   cp "$LAB_APP_ROOT/AGENTS.md" "$DEST/AGENTS.md"
+  # Core Lab App skills
+  for skill in director-orchestrate execute-backlog-ticket new-app design-with-claude libre-uiux; do
+    if [[ -d "$LAB_APP_ROOT/.cursor/skills/$skill" ]]; then
+      rm -rf "$DEST/.cursor/skills/$skill"
+      cp -R "$LAB_APP_ROOT/.cursor/skills/$skill" "$DEST/.cursor/skills/$skill"
+    fi
+  done
+  # UI UX Pro Max (optional; install in Lab App first via install-design-agents.sh)
+  if [[ -d "$LAB_APP_ROOT/.cursor/skills/ui-ux-pro-max" ]]; then
+    rm -rf "$DEST/.cursor/skills/ui-ux-pro-max"
+    cp -R "$LAB_APP_ROOT/.cursor/skills/ui-ux-pro-max" "$DEST/.cursor/skills/ui-ux-pro-max"
+  fi
 }
 
 echo "Creating $DEST ($STACK)..."

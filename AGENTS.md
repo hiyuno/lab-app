@@ -20,7 +20,8 @@ Process hub for iOS and macOS apps. When working **inside a spawned app**, alway
 **Owner:** interaction quality and flow clarity.  
 **Inputs:** prioritized tickets.  
 **Outputs:** `docs/SCREENS.md`, wireflows, states, interactions.  
-**Role files:** `roles/ux-ios.md`, `roles/ux-macos.md`
+**Role files:** `roles/ux-ios.md`, `roles/ux-macos.md`  
+**Design libraries (phase 3):** skills `ui-ux-pro-max`, `design-with-claude`, `libre-uiux` — see [process/DESIGN_AGENTS.md](process/DESIGN_AGENTS.md)
 
 ### 4) Brand + Content
 **Owner:** tone and copy.  
