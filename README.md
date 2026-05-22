@@ -1,5 +1,7 @@
 # Lab App
 
+https://github.com/hiyuno/lab-app
+
 Meta-repository for creating **iOS** and **macOS** apps with a repeatable, agent-friendly process. App source code lives in **sibling folders** under `Github/` (for example `Goals/`, `MyApp/`), not inside Lab App.
 
 ## Start here

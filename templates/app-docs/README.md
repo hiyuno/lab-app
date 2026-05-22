@@ -2,7 +2,7 @@
 
 <!-- One-line description -->
 
-Created with [Lab App](https://github.com/) process templates.
+Created with [Lab App](https://github.com/hiyuno/lab-app) process templates.
 
 ## Agent entry
 
