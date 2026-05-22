@@ -7,3 +7,18 @@
 [submodule "external/LibreUIUX-Claude-Code"]
 	path = external/LibreUIUX-Claude-Code
 	url = https://github.com/HermeticOrmus/LibreUIUX-Claude-Code.git
+[submodule "external/swift-agent-skills"]
+	path = external/swift-agent-skills
+	url = https://github.com/twostraws/swift-agent-skills.git
+[submodule "external/claude-code-ios-dev-guide"]
+	path = external/claude-code-ios-dev-guide
+	url = https://github.com/keskinonur/claude-code-ios-dev-guide.git
+[submodule "external/SwiftUI-Agent-Skill"]
+	path = external/SwiftUI-Agent-Skill
+	url = https://github.com/twostraws/SwiftUI-Agent-Skill.git
+[submodule "external/Swift-Concurrency-Agent-Skill"]
+	path = external/Swift-Concurrency-Agent-Skill
+	url = https://github.com/twostraws/Swift-Concurrency-Agent-Skill.git
+[submodule "external/SwiftData-Agent-Skill"]
+	path = external/SwiftData-Agent-Skill
+	url = https://github.com/twostraws/SwiftData-Agent-Skill.git

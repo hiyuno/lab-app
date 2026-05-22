@@ -32,12 +32,14 @@ Process hub for iOS and macOS apps. When working **inside a spawned app**, alway
 **Owner:** technical shape and reliability.  
 **Inputs:** product + UX requirements.  
 **Outputs:** `docs/ARCHITECTURE.md`, optional `docs/decisions/ADR-*.md`.  
-**Role files:** `roles/architect-ios.md`, `roles/architect-macos.md`
+**Role files:** `roles/architect-ios.md`, `roles/architect-macos.md`  
+**Swift libraries (iOS, phases 4–6):** `ios-dev-guide`, `swift-agent-skills`, `swiftdata-pro` — see [process/SWIFT_AGENTS.md](process/SWIFT_AGENTS.md)
 
 ### 6) Feature Engineer
 **Owner:** shipping features.  
 **Inputs:** approved spec + UX + architecture.  
-**Outputs:** working code, build verification, ticket closure notes.
+**Outputs:** working code, build verification, ticket closure notes.  
+**Swift libraries (iOS, phase 6):** `swiftui-pro`, `swift-concurrency-pro`, `swiftdata-pro`, `ios-dev-guide`, `execute-backlog-ticket`
 
 ### 7) QA / Reviewer
 **Owner:** manual validation before alpha.  

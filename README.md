@@ -32,6 +32,21 @@ git submodule update --init --recursive
 
 Details: [process/DESIGN_AGENTS.md](process/DESIGN_AGENTS.md).
 
+## Swift / iOS programming agents
+
+| Skill | Source |
+|-------|--------|
+| `swift-agent-skills` | [twostraws/swift-agent-skills](https://github.com/twostraws/swift-agent-skills) (catalog) |
+| `swiftui-pro` / `swift-concurrency-pro` / `swiftdata-pro` | [twostraws](https://github.com/twostraws) Agent Skills |
+| `ios-dev-guide` | [claude-code-ios-dev-guide](https://github.com/keskinonur/claude-code-ios-dev-guide) |
+
+```bash
+./scripts/install-swift-agents.sh
+# or: ./scripts/install-agents.sh
+```
+
+Details: [process/SWIFT_AGENTS.md](process/SWIFT_AGENTS.md).
+
 ## Create a new app
 
 ```bash

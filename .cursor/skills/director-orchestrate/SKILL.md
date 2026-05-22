@@ -24,7 +24,8 @@ description: >-
 | 3-design | UX (ios/macos) + Brand | `SCREENS.md`, `COPY.md`; optional `ui-ux-pro-max`, `design-with-claude`, `libre-uiux` per [process/DESIGN_AGENTS.md](../../process/DESIGN_AGENTS.md) |
 | 4-architecture | Architect (ios/macos) | `ARCHITECTURE.md` |
 | 5-scaffold | Engineer | Green build |
-| 6-build | Engineer | One P0 ticket closed |
+| 6-build | Engineer | One P0 ticket closed; iOS: `swiftui-pro` / `swift-concurrency-pro` / `swiftdata-pro` per [process/SWIFT_AGENTS.md](../../process/SWIFT_AGENTS.md) |
+| 4-architecture | Architect (iOS) | `ARCHITECTURE.md`; optional `ios-dev-guide` |
 | 7-alpha | QA | `QA.md` |
 
 Update `docs/STATUS.md`: **Phase**, **Active role**, **Next action**, **Handoff queue** table.

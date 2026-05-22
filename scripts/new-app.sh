@@ -78,17 +78,19 @@ copy_roles_and_cursor() {
   cp "$LAB_APP_ROOT/.cursor/rules/"*.mdc "$DEST/.cursor/rules/"
   cp "$LAB_APP_ROOT/AGENTS.md" "$DEST/AGENTS.md"
   # Core Lab App skills
-  for skill in director-orchestrate execute-backlog-ticket new-app design-with-claude libre-uiux; do
+  for skill in director-orchestrate execute-backlog-ticket new-app design-with-claude libre-uiux swift-agent-skills ios-dev-guide; do
     if [[ -d "$LAB_APP_ROOT/.cursor/skills/$skill" ]]; then
       rm -rf "$DEST/.cursor/skills/$skill"
       cp -R "$LAB_APP_ROOT/.cursor/skills/$skill" "$DEST/.cursor/skills/$skill"
     fi
   done
   # UI UX Pro Max (optional; install in Lab App first via install-design-agents.sh)
-  if [[ -d "$LAB_APP_ROOT/.cursor/skills/ui-ux-pro-max" ]]; then
-    rm -rf "$DEST/.cursor/skills/ui-ux-pro-max"
-    cp -R "$LAB_APP_ROOT/.cursor/skills/ui-ux-pro-max" "$DEST/.cursor/skills/ui-ux-pro-max"
-  fi
+  for skill in ui-ux-pro-max swiftui-pro swift-concurrency-pro swiftdata-pro; do
+    if [[ -d "$LAB_APP_ROOT/.cursor/skills/$skill" ]]; then
+      rm -rf "$DEST/.cursor/skills/$skill"
+      cp -R "$LAB_APP_ROOT/.cursor/skills/$skill" "$DEST/.cursor/skills/$skill"
+    fi
+  done
 }
 
 echo "Creating $DEST ($STACK)..."

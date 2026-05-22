@@ -25,6 +25,14 @@ Define technical shape for iOS SwiftUI apps.
 - Align with Apple platform guidance (HIG, privacy, data on device).
 - Flag tickets that need UX revision before implementation.
 
+## Swift skills
+
+- **`ios-dev-guide`** — MVVM, folders, PRD alignment (map to Lab App docs).
+- **`swift-agent-skills`** — pick persistence/testing skills from catalog if needed.
+- **`swiftdata-pro`** — when architecture includes SwiftData.
+
+See [process/SWIFT_AGENTS.md](../process/SWIFT_AGENTS.md).
+
 ## Handoff
 
 Director sets phase 5–6 when architecture is approved for P0 scope.

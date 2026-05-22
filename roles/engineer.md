@@ -26,6 +26,18 @@ Ship backlog tickets with verified behavior.
 - [ ] Build passes
 - [ ] User-visible strings match `COPY.md` when provided
 
+## Swift / iOS skills (when stack is iOS)
+
+| Ticket | Skill |
+|--------|-------|
+| UI / SwiftUI | `swiftui-pro` |
+| async / actors | `swift-concurrency-pro` |
+| SwiftData | `swiftdata-pro` |
+| Structure / PRD norms | `ios-dev-guide` |
+| Extra catalog skills | `swift-agent-skills` |
+
+See [process/SWIFT_AGENTS.md](../process/SWIFT_AGENTS.md).
+
 ## Handoff
 
 Director updates `STATUS.md` and assigns next ticket or QA (phase 7).

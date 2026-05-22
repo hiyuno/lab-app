@@ -24,8 +24,10 @@ if [[ "$TARGET" != "$LAB_APP_ROOT" ]]; then
   echo "→ Copying design wrapper skills to app..."
   mkdir -p "$TARGET/.cursor/skills"
   for skill in design-with-claude libre-uiux; do
-    rm -rf "$TARGET/.cursor/skills/$skill"
-    cp -R "$LAB_APP_ROOT/.cursor/skills/$skill" "$TARGET/.cursor/skills/$skill"
+    if [[ -d "$LAB_APP_ROOT/.cursor/skills/$skill" ]]; then
+      rm -rf "$TARGET/.cursor/skills/$skill"
+      cp -R "$LAB_APP_ROOT/.cursor/skills/$skill" "$TARGET/.cursor/skills/$skill"
+    fi
   done
 fi
 
