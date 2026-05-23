@@ -7,6 +7,7 @@ Used in **phase 3 — Design** after Product Spec. The Director assigns UX + Con
 | Skill | Source | When to use |
 |-------|--------|-------------|
 | `ui-ux-pro-max` | [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | Design system generation, palettes, typography, UX rules; run `scripts/search.py` for stack `swiftui` |
+| `ios-mac-ui-designer` | Bundled (`.cursor/skills/ios-mac-ui-designer/`) | Apple HIG-native UI for iOS, iPadOS, macOS — screens, flows, navigation patterns, design review |
 | `design-with-claude` | [design-with-claude](https://github.com/imsaif/design-with-claude) | Brief routing to specialists (`design-brief`, mobile, accessibility, motion, forms, etc.) |
 | `libre-uiux` | [LibreUIUX-Claude-Code](https://github.com/HermeticOrmus/LibreUIUX-Claude-Code) | Premium SaaS patterns, accessibility compliance, design critique |
 
@@ -51,10 +52,11 @@ Under `external/LibreUIUX-Claude-Code/`:
 1. Confirm P0 tickets and `docs/PRD.md` exist.
 2. Assign UX role (`ux-ios` or `ux-macos`).
 3. Invoke `ui-ux-pro-max` for design-system / style direction (product type + `swiftui` stack).
-4. Invoke `design-with-claude` with `design-brief` for specialist routing.
-5. Optional: `libre-uiux` for critique before Engineer handoff.
-6. Assign `brand-content` for `docs/COPY.md`.
-7. Update `docs/STATUS.md` → phase 4 or 6.
+4. Invoke `ios-mac-ui-designer` for HIG-native screens, navigation, and component choices (`docs/SCREENS.md`).
+5. Invoke `design-with-claude` with `design-brief` for specialist routing.
+6. Optional: `libre-uiux` for critique before Engineer handoff.
+7. Assign `brand-content` for `docs/COPY.md`.
+8. Update `docs/STATUS.md` → phase 4 or 6.
 
 ## Install
 

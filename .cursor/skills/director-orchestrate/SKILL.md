@@ -41,7 +41,7 @@ If `process/SKILLS_REGISTRY.md` is missing, run `scripts/sync-project-skills.sh`
 |-------|-----------|------------------|--------|
 | 1-kickoff | `director.md` | — | `KICKOFF.md` |
 | 2-spec | `product-spec.md` | — | `PRD.md`, `BACKLOG.md` |
-| 3-design | `ux-ios.md` / `ux-macos.md` | `ui-ux-pro-max`, then `design-with-claude`, optional `libre-uiux` | `SCREENS.md`, `COPY.md` |
+| 3-design | `ux-ios.md` / `ux-macos.md` | `ui-ux-pro-max`, `ios-mac-ui-designer`, then `design-with-claude`, optional `libre-uiux` | `SCREENS.md`, `COPY.md` |
 | 4-architecture | `architect-ios.md` / `architect-macos.md` | `ios-dev-guide` (iOS), `swiftdata-pro` if persistence | `ARCHITECTURE.md` |
 | 5-scaffold | `engineer.md` | `new-app` (Lab App only) | green build |
 | 6-build | `engineer.md` | `execute-backlog-ticket` + ticket skill below | P0 closed |

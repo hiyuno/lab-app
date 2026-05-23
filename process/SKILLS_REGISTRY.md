@@ -35,6 +35,7 @@ Skills live in `.cursor/skills/<name>/`. After `install-agents.sh` or `new-app.s
 | Skill | When | Output |
 |-------|------|--------|
 | `ui-ux-pro-max` | Design system, colors, typography; stack `swiftui` in scripts | direction for `SCREENS.md` |
+| `ios-mac-ui-designer` | Apple HIG, SwiftUI patterns, iOS/iPadOS/macOS screen design and review | `docs/SCREENS.md` |
 | `design-with-claude` | Brief routing, mobile/accessibility specialists | `docs/SCREENS.md` |
 | `libre-uiux` | Critique pass after screens draft | notes in `SCREENS.md` |
 | `roles/ux-ios.md` or `roles/ux-macos.md` | Always (platform) | `docs/SCREENS.md` |
