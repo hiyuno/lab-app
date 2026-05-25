@@ -7,15 +7,26 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section("OpenAI") {
+            Section("IA — OpenAI") {
                 SecureField("API Key", text: $viewModel.openAIKey)
             }
 
-            Section("Grok (xAI)") {
+            Section("IA — Grok (xAI)") {
                 SecureField("API Key", text: $viewModel.grokAPIKey)
                 Text("Obtén tu key en console.x.ai")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+
+            Section("Letras — Genius") {
+                SecureField("Client Access Token", text: $viewModel.geniusKey)
+                Text("Obtén tu token en genius.com/api-clients")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+
+            Section("Letras — Musixmatch") {
+                SecureField("API Key", text: $viewModel.musixmatchKey)
+                Text("Obtén tu key en developer.musixmatch.com")
+                    .font(.caption).foregroundStyle(.secondary)
             }
 
             Section("X (Twitter) — OAuth 1.0a") {
@@ -57,7 +68,7 @@ struct SettingsView: View {
             }
         }
         .task { await viewModel.load() }
-        .frame(width: 420, height: 490)
+        .frame(width: 420, height: 640)
         .navigationTitle("Configuración de APIs")
     }
 }
