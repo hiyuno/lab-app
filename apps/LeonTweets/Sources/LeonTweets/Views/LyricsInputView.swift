@@ -31,7 +31,16 @@ struct LyricsInputView: View {
             Divider()
 
             HStack {
+                Picker("", selection: $viewModel.provider) {
+                    ForEach(AIProvider.allCases, id: \.self) { provider in
+                        Text(provider.displayName).tag(provider)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .fixedSize()
+
                 Spacer()
+
                 Button("Interpretar") {
                     Task {
                         if let interpretation = await viewModel.interpret() {
@@ -49,7 +58,7 @@ struct LyricsInputView: View {
             if viewModel.isLoading {
                 ZStack {
                     Color.black.opacity(0.08)
-                    ProgressView("Interpretando…")
+                    ProgressView("Interpretando con \(viewModel.provider.displayName)…")
                         .padding(20)
                         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
                 }

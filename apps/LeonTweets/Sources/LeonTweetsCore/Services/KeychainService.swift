@@ -6,6 +6,7 @@ actor KeychainService {
 
     enum Key: String {
         case openAIKey = "mx.9866.leontweets.openai"
+        case grokAPIKey = "mx.9866.leontweets.grok"
         case twitterAPIKey = "mx.9866.leontweets.twitter.apikey"
         case twitterAPISecret = "mx.9866.leontweets.twitter.apisecret"
         case twitterAccessToken = "mx.9866.leontweets.twitter.accesstoken"

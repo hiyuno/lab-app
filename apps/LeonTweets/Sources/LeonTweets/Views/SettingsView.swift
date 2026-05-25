@@ -11,6 +11,13 @@ struct SettingsView: View {
                 SecureField("API Key", text: $viewModel.openAIKey)
             }
 
+            Section("Grok (xAI)") {
+                SecureField("API Key", text: $viewModel.grokAPIKey)
+                Text("Obtén tu key en console.x.ai")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
             Section("X (Twitter) — OAuth 1.0a") {
                 SecureField("API Key", text: $viewModel.twitterAPIKey)
                 SecureField("API Secret", text: $viewModel.twitterAPISecret)
@@ -50,7 +57,7 @@ struct SettingsView: View {
             }
         }
         .task { await viewModel.load() }
-        .frame(width: 420, height: 400)
+        .frame(width: 420, height: 490)
         .navigationTitle("Configuración de APIs")
     }
 }
