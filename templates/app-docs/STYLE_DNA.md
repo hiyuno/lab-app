@@ -2,7 +2,8 @@
 
 > Documento vivo. Actualizado por `steve-ui` con cada screenshot de referencia nuevo.  
 > Última actualización: —  
-> Referencias analizadas: 0 (iOS: 0, macOS: 0)
+> Referencias analizadas: 0 (iOS: 0, macOS: 0)  
+> **Versión target iOS:** sin definir | **Versión target macOS:** sin definir
 
 ---
 
@@ -83,6 +84,7 @@ ZStack { ConcentricRectangle().padding(padding) }
 | Botón CTA | pill 999pt | — | — | sin definir |
 | Section chips | pill | — | — | sin definir |
 | Tab bar container | pill | — | — | sin definir |
+| Tab activo inner bubble | pill | — | r_outer − padding (pill) | sin definir |
 | Inputs | — | — | — | sin definir |
 | Sheets | — | — | r_outer − padding | sin definir |
 
@@ -109,6 +111,24 @@ ZStack { ConcentricRectangle().padding(padding) }
 | Botones secundarios | .glass | sin definir |
 
 **Nested glass:** `ConcentricRectangle().glassEffect()` — r_inner automático iOS 26.
+
+---
+
+## Glass fallback por versión
+
+> Si el target < iOS 26 / macOS Tahoe, usar la columna de fallback.
+
+| Componente | iOS 26+ / macOS Tahoe (Liquid Glass) | iOS 15–25 (SwiftUI Material) | iOS 13–14 / macOS 12–15 |
+|---|---|---|---|
+| Tab bar pill flotante | `Capsule().glassEffect(.regular)` | `.background(.ultraThinMaterial, in: Capsule())` | `UIVisualEffectView(UIBlurEffect(style: .systemUltraThinMaterial))` |
+| Tab activo inner bubble | `ConcentricRectangle().glassEffect()` | `Capsule().fill(.white.opacity(0.15))` | `UIVisualEffectView` + vibrancy |
+| NavBar / toolbar flotante | `RoundedRectangle(…, .continuous).glassEffect(.regular)` | `.background(.ultraThinMaterial)` + clip | `UINavigationBarAppearance` + blur |
+| Botón CTA | `.buttonStyle(.glassProminent)` | Fill con acento | Fill con acento |
+| Botón secundario | `.buttonStyle(.glass)` | `.background(.thinMaterial, in: Capsule())` | `UIVisualEffectView` + vibrancy |
+| Sidebar macOS | `RoundedRectangle(…).glassEffect(.regular)` | `.background(.ultraThinMaterial)` | `NSVisualEffectView(material: .sidebar, blendingMode: .behindWindow)` |
+| Sheet / modal | `Capsule().glassEffect(.clear)` + dimming | `.background(.regularMaterial)` | `UIVisualEffectView` regular |
+
+**ViewModifiers reutilizables:** `GlassCapsule`, `GlassActiveTab`, `GlassCompat` — ver skill `steve-ui`.
 
 ---
 
