@@ -15,6 +15,7 @@ Flows that follow Apple HIG, with clear hierarchy and complete UI states.
 
 ## Workflow
 
+0. **Style DNA** — If `docs/STYLE_DNA.md` exists, read it before proposing any layout or component. Apply confirmed color tokens, corner radii, typography scale, and navigation pattern. Note which values are still undefined.
 1. **Discovery** — user task, constraints from `KICKOFF.md`.
 2. **Proposal** — structure, navigation, key components.
 3. **Validation** — HIG and accessibility checklist.
@@ -42,9 +43,10 @@ Flows that follow Apple HIG, with clear hierarchy and complete UI states.
 
 After drafting `docs/SCREENS.md`, Director may invoke:
 
-1. **`ui-ux-pro-max`** — design system / style (use SwiftUI stack in search).
-2. **`design-with-claude`** — `external/design-with-claude/commands/design-brief.md` + `mobile-specialist.md`, `accessibility-specialist.md`.
-3. **`libre-uiux`** — critique via `plugins/design-mastery` and `accessibility-compliance`.
+1. **`steve-ui`** — if user has visual references, run first to build `docs/STYLE_DNA.md` before any design work.
+2. **`ui-ux-pro-max`** — design system / style (use SwiftUI stack in search).
+3. **`design-with-claude`** — `external/design-with-claude/commands/design-brief.md` + `mobile-specialist.md`, `accessibility-specialist.md`.
+4. **`libre-uiux`** — critique via `plugins/design-mastery` and `accessibility-compliance`.
 
 See [process/DESIGN_AGENTS.md](../process/DESIGN_AGENTS.md).
 
