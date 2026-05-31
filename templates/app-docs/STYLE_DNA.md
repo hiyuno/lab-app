@@ -34,8 +34,7 @@
 | Callout | — | — | sin definir |
 | Caption | — | — | sin definir |
 
-**Densidad:** compacta / balanceada / generosa — *sin definir*  
-**Sistema de fuente:** SF Pro (sistema) / custom — *sin definir*
+**Densidad:** *sin definir* | **Sistema de fuente:** SF Pro / custom — *sin definir*
 
 ---
 
@@ -47,118 +46,87 @@
 | Margen de página | — | sin definir |
 | Gap entre secciones | — | sin definir |
 | Altura de list row | — | sin definir |
-| Gap inline entre elementos | — | sin definir |
 
 ---
 
-## Forma
+## Forma — Continuous Corners + Nested Radius
 
-| Componente | iOS | macOS | Estado |
-|------------|-----|-------|--------|
-| Cards | — | — | sin definir |
-| Botón CTA primario | — | — | sin definir |
-| Botón secundario | — | — | sin definir |
-| Input fields | — | — | sin definir |
-| Chips / tags | — | — | sin definir |
+### Regla 1: Continuous Corners universales (absoluta, sin excepciones)
 
-**Sensación de forma:** sharp / sutil / redondeada / pill — *sin definir*
+```
+SwiftUI:      RoundedRectangle(cornerRadius: x, style: .continuous)
+UIKit/AppKit: layer.cornerRadius = x + layer.cornerCurve = .continuous
+NUNCA:        style: .circular
+```
+
+### Regla 2: Radio anidado — r_inner = r_outer − padding
+
+```
+r_inner = r_outer − padding          // siempre
+r_inner = max(r_outer − padding, 0)  // nunca negativo
+
+// Anidamiento múltiple:
+r_level_1 = r_outer − padding_1
+r_level_2 = r_level_1 − padding_2
+
+// iOS 26 — automático:
+ZStack { ConcentricRectangle().padding(padding) }
+    .containerShape(.rect(cornerRadius: r_outer, style: .continuous))
+```
+
+**Sistema de radios:**
+
+| Componente | r_outer | padding | r_inner | Estado |
+|------------|---------|---------|---------|--------|
+| Card grande | — | — | r_outer − padding | sin definir |
+| Card grid | — | — | r_outer − padding | sin definir |
+| Botón CTA | pill 999pt | — | — | sin definir |
+| Section chips | pill | — | — | sin definir |
+| Tab bar container | pill | — | — | sin definir |
+| Inputs | — | — | — | sin definir |
+| Sheets | — | — | r_outer − padding | sin definir |
 
 ---
 
 ## Profundidad y elevación
 
-**Sistema:** plano / sombras sutiles / elevación marcada / Liquid Glass — *sin definir*
-
-| Nivel | Tratamiento | Cuándo usar |
-|-------|-------------|-------------|
-| Base | — | — |
-| Cards | — | — |
-| Sheets / modales | — | — |
-| Overlays | — | — |
+**Sistema:** plano / sombras sutiles / blur·glass — *sin definir*
 
 ---
 
 ## Liquid Glass
 
-> Referencia: iOS 26 / macOS Tahoe. Regla principal: usar SOLO en navigation layer, NUNCA en content layer.
+> Regla: SOLO en navigation layer. NUNCA en content layer.
 
-**Adopción:** completa / parcial / ninguna — *sin definir*
-
-### Variante
+**Adopción:** *sin definir*
 
 | Componente | Variante | Estado |
 |------------|----------|--------|
 | Tab bar | Regular / Clear | sin definir |
 | NavigationBar / Toolbar | Regular / Clear | sin definir |
 | Sidebar (macOS/iPad) | Regular / Clear | sin definir |
-| Botones CTA | .glassProminent / .glass | sin definir |
-| Botones secundarios | .glass / estándar | sin definir |
-| Sheets / Popovers | Regular / Clear | sin definir |
+| Botones CTA | .glassProminent | sin definir |
+| Botones secundarios | .glass | sin definir |
 
-### Reglas aplicadas a esta app
-
-- Navigation layer usa glass: *sin definir*
-- Content layer libre de glass: *sin definir*
-- Stacking evitado: *sin definir*
-- Tab bar encoge en scroll: *sin definir*
-
-### Accesibilidad
-
-- Fallback opaco diseñado (Reduce Transparency): *sin definir*
-- Contraste verificado para Increase Contrast: *sin definir*
+**Nested glass:** `ConcentricRectangle().glassEffect()` — r_inner automático iOS 26.
 
 ---
 
 ## Componentes — iOS
 
-### Botones
-- CTA primario: *sin definir*
-- Secundario: *sin definir*
-- Destructivo: *sin definir*
-
-### Listas / rows
-- Estilo: *sin definir*
-- Separadores: *sin definir*
-
-### Cards
-- Estilo: *sin definir*
-
-### Navegación iOS
-- Patrón: TabBar / NavigationBar / custom — *sin definir*
-- Estilo de TabBar: *sin definir*
-- Tab bar scroll behavior: *sin definir*
+Botones / Listas / Cards / Navegación / Tab bar: *sin definir*
 
 ---
 
 ## Componentes — macOS
 
-### Ventana
-- Material principal: *sin definir*
-- Título bar: *sin definir*
-- Traffic lights: *sin definir*
-
-### Sidebar
-- Presente: *sin definir*
-- Material / lensing: *sin definir*
-- Ancho: *sin definir*
-- Estilo de ítems: *sin definir*
-
-### Toolbar
-- Presente: *sin definir*
-- Estilo: *sin definir*
-
-### Inspector panel
-- Presente: *sin definir*
-
-### Vibrancy
-- Uso: *sin definir*
+Material / Título bar / Sidebar / Toolbar / Inspector / Vibrancy: *sin definir*
 
 ---
 
 ## Iconografía
 
-**Estilo:** SF Symbols outline / SF Symbols fill / custom — *sin definir*  
-**Presencia:** abundante / moderada / mínima — *sin definir*
+**Estilo:** *sin definir* | **Presencia:** *sin definir*
 
 ---
 
@@ -169,8 +137,6 @@
 ---
 
 ## Decisiones de estilo
-
-<!-- steve-ui registra aquí los conflictos resueltos y sus razones -->
 
 *Sin decisiones todavía.*
 

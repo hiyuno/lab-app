@@ -10,20 +10,18 @@
 
 | Token | Light mode | Dark mode | Estado |
 |-------|-----------|-----------|--------|
-| Background | `#F5F0EB` — crema cálida custom (NO systemGroupedBackground) | `#000000` puro | **confirmado** |
-| Surface / cards | `#FFFFFF` blanco puro | `#1C1C1E` charcoal (systemGray6 dark) | **confirmado** |
-| Acento primario | `#3399FF` azul vivo | `#FFFFFF` blanco | tendencia |
+| Background | `#F5F0EB` — crema cálida custom | `#000000` puro | **confirmado** |
+| Surface / cards | `#FFFFFF` | `#1C1C1E` charcoal | **confirmado** |
+| Acento primario | `#3399FF` azul | `#FFFFFF` | tendencia |
 | Acento secundario | `#9B8FF5` lavanda | — | tendencia |
-| Acento terciario | `#FF6830` naranja/fuego | — | tendencia |
+| Acento terciario | `#FF6830` naranja | — | tendencia |
 | Texto primario | `#000000` / `#1C1C1E` | `#FFFFFF` | **confirmado** |
-| Texto secundario | `#8E8E93` gris medio | `#8E8E93` | **confirmado** |
-| Borde / divisor | ninguno — contraste background/card crea jerarquía | ninguno | **confirmado** |
-| CTA Button bg | `#000000` negro puro | `#FFFFFF` blanco | **confirmado** |
-| CTA Button text | `#FFFFFF` blanco | `#000000` negro | **confirmado** |
+| Texto secundario | `#8E8E93` | `#8E8E93` | **confirmado** |
+| Borde / divisor | ninguno — contraste crea jerarquía | ninguno | **confirmado** |
+| CTA Button bg | `#000000` | `#FFFFFF` | **confirmado** |
+| CTA Button text | `#FFFFFF` | `#000000` | **confirmado** |
 
 **Modo:** adaptivo light/dark — **confirmado**
-
-> **Nota clave:** El fondo crema `#F5F0EB` es deliberado. Las cards blancas sobre crema crean jerarquía sin sombras.
 
 ---
 
@@ -32,14 +30,14 @@
 | Rol | Peso | Tamaño (pt) | Estado |
 |-----|------|-------------|--------|
 | Large Title | Bold / Black | ~34pt | **confirmado** |
-| Display numeral (datos prominentes) | Black / Heavy | ~60–70pt | **confirmado** |
-| Title / Headline de pantalla | Semibold | ~22–24pt | **confirmado** |
+| Display numeral | Black / Heavy | ~60–70pt | **confirmado** |
+| Title / Headline | Semibold | ~22–24pt | **confirmado** |
 | Body | Regular | ~15–17pt | **confirmado** |
 | Caption / metadata | Regular | ~12–13pt | **confirmado** |
 | Tab bar labels | Regular | ~10pt | **confirmado** |
 
 **Densidad:** balanceada-generosa — **confirmado**  
-**Sistema de fuente:** SF Pro (sistema) — **confirmado**
+**Sistema de fuente:** SF Pro — **confirmado**
 
 ---
 
@@ -54,72 +52,72 @@
 
 ---
 
-## Forma — Continuous Corners
+## Forma — Continuous Corners + Nested Radius
 
-> **Regla universal: TODOS los bordes redondeados usan Continuous Corners, sin excepciones.**  
+### Regla 1: Continuous Corners universales
+
+> **TODOS los bordes redondeados usan Continuous Corners.**  
 > SwiftUI: `RoundedRectangle(cornerRadius: x, style: .continuous)`  
-> UIKit / AppKit: `layer.cornerRadius = x` + `layer.cornerCurve = .continuous`  
-> **NUNCA** usar `style: .circular`. Continuous Corners en cards, botones, chips, pills, tabs, inputs, imágenes, sliders, sheets — absolutamente todo.
+> UIKit/AppKit: `layer.cornerCurve = .continuous`  
+> NUNCA `style: .circular`.
 
-| Componente | Corner radius | Curva | Estado |
-|------------|--------------|-------|--------|
-| Cards grandes (feature) | ~20–24pt | Continuous Corners | **confirmado** |
-| Cards grid (pequeñas) | ~16–18pt | Continuous Corners | **confirmado** |
-| Botón CTA primario | pill ~999pt | Continuous Corners | **confirmado** |
-| Botones pill secundarios (Back, Skip) | ~14pt | Continuous Corners | **confirmado** |
-| Section chips / labels | ~20pt+ (pill) | Continuous Corners | **confirmado** |
-| Tab bar pill container | ~999pt (pill) | Continuous Corners | **confirmado** |
-| Input fields | ~12–14pt | Continuous Corners | sin definir radio |
-| Slider thumb | pill grande | Continuous Corners | tendencia |
-| Mini stat cards | ~14–16pt | Continuous Corners | **confirmado** |
-| Sheets / modales | ~20–24pt (top) | Continuous Corners | sin definir radio |
+### Regla 2: Radio anidado — r_inner = r_outer − padding
 
-**Sensación de forma:** Continuous Corners uniforme en todo el sistema — **confirmado (regla absoluta)**
+> **Todo elemento dentro de un contenedor redondeado debe usar:**  
+> `r_inner = r_outer − padding`
+
+IOS 26: usar `ConcentricRectangle()` + `.containerShape(.rect(cornerRadius: x, style: .continuous))` para cálculo automático.
+
+**Sistema de radios de este estilo:**
+
+| Componente | r_outer | padding interno | r_inner | Curva |
+|------------|---------|----------------|---------|-------|
+| Card grande (feature) | ~24pt | ~20pt (contenido) | ~4pt | Continuous |
+| Card grid | ~20pt | ~16pt | ~4pt | Continuous |
+| Card con section chip | ~20pt | ~8pt (chip margin) | ~12pt | Continuous |
+| Sheet / modal | ~28pt | ~20pt | ~8pt | Continuous |
+| Botón CTA full-width | pill 999pt | — | — (pill siempre) | Continuous |
+| Tab bar pill container | pill 999pt | ~8pt (chip interno) | ~991pt (pill) | Continuous |
+| Section chips | pill ~20pt | — | — | Continuous |
+| Inputs | ~12–14pt | — | — | Continuous |
+| Mini stat cards | ~16pt | ~12pt | ~4pt | Continuous |
+
+**Anidamiento múltiple:**
+```
+r_level_1 = r_outer − padding_1
+r_level_2 = r_level_1 − padding_2
+// Nunca resultado negativo: max(r, 0)
+```
 
 ---
 
 ## Profundidad y elevación
 
-**Sistema:** plano — **confirmado** (CERO sombras. Jerarquía únicamente por contraste background/card)
-
-| Nivel | Tratamiento |
-|-------|-------------|
-| Background | Crema `#F5F0EB` |
-| Cards | Blanco `#FFFFFF` |
-| Sheets / modales | sin definir |
-| Overlays | sin definir |
+**Sistema:** plano — **confirmado** (CERO sombras. Jerarquía por contraste background/card)
 
 ---
 
 ## Componentes distintivos — Mejoras sobre HIG estándar
 
-### Tab bar — Pill flotante agrupado (Continuous Corners)
-NO es el `TabBar` estándar de iOS. Pills flotantes en el bottom: tabs de navegación en pill izquierdo agrupado, acción principal (+) en pill derecho. Todos con `style: .continuous`.  
+### Tab bar — Pill flotante agrupado
+NO es UITabBar. Pills flotantes en el bottom con Continuous Corners. Candidato para `.glassEffect(.regular)` en iOS 26.  
 **Estado:** **confirmado**
 
-**Nota iOS 26:** Candidato para `.glassEffect(.regular)` en el pill container.
-
-### Section chips / labels (Continuous Corners)
-Pequeños pill labels de color que identifican la sección de cada card. Fondo tintado + icóno + texto Semibold ~13pt. Esquina superior izquierda de la card.
-
-**Colores:**
-- Summary: bg `#EAE8FD`, texto/icóno `#9B8FF5`
-- Calories / Meals: bg `#E3F2FF`, texto/icóno `#3399FF`
-- Daily goal: bg `#FFF0E8`, texto/icóno `#FF6830`
+### Section chips / labels
+Pill labels de color (Continuous Corners) en esquina superior izquierda de cards.
+- Summary: bg `#EAE8FD`, texto `#9B8FF5`
+- Calories/Meals: bg `#E3F2FF`, texto `#3399FF`
+- Daily goal: bg `#FFF0E8`, texto `#FF6830`
 
 **Estado:** **confirmado**
 
 ### Display numeral
-Números de datos en Black/Heavy ~60–70pt. `%` en ~22pt. Sin contenedor.  
+Black/Heavy ~60–70pt. Sin contenedor. Domina la card.  
 **Estado:** **confirmado**
 
-### Botón CTA primario full-width
-Negro `#000000`, pill full-width con Continuous Corners, ~56pt alto, texto blanco Semibold ~17pt.  
+### Botón CTA full-width
+Negro `#000000`, pill Continuous Corners, ~56pt alto. Anclado al bottom.  
 **Estado:** **confirmado**
-
-### Custom NavBar
-Logo/nombre en Bold izquierda, contexto en gris. Botones de acción en pills Continuous Corners a la derecha.  
-**Estado:** tendencia
 
 ---
 
@@ -129,22 +127,21 @@ Logo/nombre en Bold izquierda, contexto en gris. Botones de acción en pills Con
 
 | Componente | Acción | Variante |
 |------------|--------|----------|
-| Tab bar pill flotante | `.glassEffect(.regular)` + `style: .continuous` | Regular |
-| NavBar custom | `.glassEffect(.regular)` si flota sobre contenido | Regular |
-| Sheets / popovers | Glass automático del sistema | Regular |
-| Section chips en cards | Mantener tintado opaco (content layer) | Sin glass |
+| Tab bar pill | `.glassEffect(.regular)` + Continuous Corners | Regular |
+| NavBar custom | `.glassEffect(.regular)` si flota | Regular |
+| Section chips | Mantener tintado opaco (content layer) | Sin glass |
 | Cards | Blanco opaco (content layer) | Sin glass |
 | Botón CTA | `.buttonStyle(.glassProminent)` | Regular |
 | Botones secundarios | `.buttonStyle(.glass)` | Regular |
 
-**Fallback Reduce Transparency:** diseño base ya es 100% opaco — degrada perfectamente.
+**Nested glass:** `ConcentricRectangle().glassEffect()` — r_inner calculado automáticamente.  
+**Fallback Reduce Transparency:** diseño base ya es 100% opaco.
 
 ---
 
 ## Iconografía
 
-**Estilo:** mix SF Symbols + custom illustrations — tendencia  
-**Presencia:** moderada — **confirmado**
+**Estilo:** mix SF Symbols + custom — tendencia | **Presencia:** moderada — **confirmado**
 
 ---
 
@@ -156,20 +153,21 @@ Logo/nombre en Bold izquierda, contexto en gris. Botones de acción en pills Con
 
 ## Decisiones de estilo
 
-1. **Continuous Corners universales** — `RoundedRectangle(cornerRadius:, style: .continuous)` en TODO. Sin excepciones. Es la decisión más transversal del sistema.
-2. **Fondo crema** en lugar de systemGroupedBackground — aporta calidez.
-3. **Tab bar pill flotante** en lugar de UITabBar estándar.
-4. **Section chips** como etiquetas de card — usar en todas las apps.
-5. **Sin sombras** — toda la jerarquía por contraste de color.
+1. **Continuous Corners universales** — `style: .continuous` en absolutamente todo.
+2. **r_inner = r_outer − padding** — regla obligatoria en todos los contenedores anidados. iOS 26: `ConcentricRectangle`.
+3. **Fondo crema** `#F5F0EB` en lugar de systemGroupedBackground.
+4. **Tab bar pill flotante** en lugar de UITabBar estándar.
+5. **Section chips** como etiquetas de card — usar en todas las apps.
+6. **Sin sombras** — jerarquía por contraste de color.
 
 ---
 
 ## Preguntas abiertas
 
 - [ ] ¿Glass en tab bar pill al adoptar iOS 26, o mantener opaco?
-- [ ] ¿El fondo crema aplica también en macOS?
-- [ ] ¿Los section chips van en todas las apps o solo en apps de datos?
-- [ ] Verificar ratio WCAG: crema `#F5F0EB` vs texto secundario `#8E8E93`
+- [ ] ¿Fondo crema aplica también en macOS?
+- [ ] ¿Section chips en todas las apps o solo apps de datos?
+- [ ] Verificar WCAG: crema `#F5F0EB` vs texto secundario `#8E8E93`
 
 ---
 
@@ -177,5 +175,5 @@ Logo/nombre en Bold izquierda, contexto en gris. Botones de acción en pills Con
 
 | Fecha | Fuente / App | Plataforma | Liquid Glass | Aportación principal |
 |-------|-------------|------------|--------------|---------------------|
-| 2026-05-31 | App de experimentos/hábitos (dark) | iOS | No | Dark mode negro puro + charcoal cards, pill Continuous Corners, iconografía custom |
-| 2026-05-31 | Nutrie (nutrition tracker) | iOS | No | Crema background, tab bar pill flotante, section chips, display numerals, CTA full-width negro |
+| 2026-05-31 | App experimentos/hábitos (dark) | iOS | No | Dark mode negro + charcoal cards, pill CTA blanco |
+| 2026-05-31 | Nutrie (nutrition tracker) | iOS | No | Crema bg, tab bar pill flotante, section chips, display numerals, CTA negro |
