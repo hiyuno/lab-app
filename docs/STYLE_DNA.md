@@ -54,28 +54,27 @@
 
 ---
 
-## Forma
+## Forma — Continuous Corners
 
-> **Regla universal: TODOS los bordes redondeados usan curva squircle — superelipse continua.**  
+> **Regla universal: TODOS los bordes redondeados usan Continuous Corners, sin excepciones.**  
 > SwiftUI: `RoundedRectangle(cornerRadius: x, style: .continuous)`  
 > UIKit / AppKit: `layer.cornerRadius = x` + `layer.cornerCurve = .continuous`  
-> **NUNCA** usar `.circular` (arco circular estándar). Squircle en absolutamente todo.
+> **NUNCA** usar `style: .circular`. Continuous Corners en cards, botones, chips, pills, tabs, inputs, imágenes, sliders, sheets — absolutamente todo.
 
 | Componente | Corner radius | Curva | Estado |
 |------------|--------------|-------|--------|
-| Cards grandes (feature) | ~20–24pt | **squircle** `.continuous` | **confirmado** |
-| Cards grid (pequeñas) | ~16–18pt | **squircle** `.continuous` | **confirmado** |
-| Botón CTA primario | pill ~999pt | **squircle** `.continuous` | **confirmado** |
-| Botones pill secundarios (Back, Skip) | ~14pt | **squircle** `.continuous` | **confirmado** |
-| Section chips / labels | ~20pt+ (pill) | **squircle** `.continuous` | **confirmado** |
-| Tab bar pill container | ~999pt (pill) | **squircle** `.continuous` | **confirmado** |
-| Input fields | ~12–14pt | **squircle** `.continuous` | sin definir radio |
-| Slider thumb | pill grande | **squircle** `.continuous` | tendencia |
-| Mini stat cards | ~14–16pt | **squircle** `.continuous` | **confirmado** |
-| Sheets / modales | ~20–24pt (top) | **squircle** `.continuous` | sin definir radio |
-| Chips / tags | ~999pt (pill) | **squircle** `.continuous` | **confirmado** |
+| Cards grandes (feature) | ~20–24pt | Continuous Corners | **confirmado** |
+| Cards grid (pequeñas) | ~16–18pt | Continuous Corners | **confirmado** |
+| Botón CTA primario | pill ~999pt | Continuous Corners | **confirmado** |
+| Botones pill secundarios (Back, Skip) | ~14pt | Continuous Corners | **confirmado** |
+| Section chips / labels | ~20pt+ (pill) | Continuous Corners | **confirmado** |
+| Tab bar pill container | ~999pt (pill) | Continuous Corners | **confirmado** |
+| Input fields | ~12–14pt | Continuous Corners | sin definir radio |
+| Slider thumb | pill grande | Continuous Corners | tendencia |
+| Mini stat cards | ~14–16pt | Continuous Corners | **confirmado** |
+| Sheets / modales | ~20–24pt (top) | Continuous Corners | sin definir radio |
 
-**Sensación de forma:** squircle uniforme en todo el sistema — **confirmado (regla absoluta)**
+**Sensación de forma:** Continuous Corners uniforme en todo el sistema — **confirmado (regla absoluta)**
 
 ---
 
@@ -94,14 +93,14 @@
 
 ## Componentes distintivos — Mejoras sobre HIG estándar
 
-### Tab bar — Pill flotante agrupado (squircle)
-NO es el `TabBar` estándar de iOS. Pills flotantes en el bottom: tabs de navegación en pill izquierdo agrupado, acción principal (+) en pill derecho. Todos con curva `.continuous`.  
+### Tab bar — Pill flotante agrupado (Continuous Corners)
+NO es el `TabBar` estándar de iOS. Pills flotantes en el bottom: tabs de navegación en pill izquierdo agrupado, acción principal (+) en pill derecho. Todos con `style: .continuous`.  
 **Estado:** **confirmado**
 
 **Nota iOS 26:** Candidato para `.glassEffect(.regular)` en el pill container.
 
-### Section chips / labels (squircle)
-Pequeños pill labels de color que identifican la sección de cada card. Fondo tintado + icóno + texto Semibold ~13pt. Esquina superior izquierda de la card. Curva `.continuous`.
+### Section chips / labels (Continuous Corners)
+Pequeños pill labels de color que identifican la sección de cada card. Fondo tintado + icóno + texto Semibold ~13pt. Esquina superior izquierda de la card.
 
 **Colores:**
 - Summary: bg `#EAE8FD`, texto/icóno `#9B8FF5`
@@ -111,15 +110,15 @@ Pequeños pill labels de color que identifican la sección de cada card. Fondo t
 **Estado:** **confirmado**
 
 ### Display numeral
-Números de datos en Black/Heavy ~60–70pt. `%` en ~22pt junto al número. Sin contenedor.  
+Números de datos en Black/Heavy ~60–70pt. `%` en ~22pt. Sin contenedor.  
 **Estado:** **confirmado**
 
 ### Botón CTA primario full-width
-Negro `#000000`, pill squircle full-width, ~56pt alto, texto blanco Semibold ~17pt. Anclado al bottom.  
+Negro `#000000`, pill full-width con Continuous Corners, ~56pt alto, texto blanco Semibold ~17pt.  
 **Estado:** **confirmado**
 
 ### Custom NavBar
-Logo/nombre en Bold izquierda, contexto (fecha/subtitulo) en gris. Botones de acción en pills squircle pequeños a la derecha. Sin borde inferior.  
+Logo/nombre en Bold izquierda, contexto en gris. Botones de acción en pills Continuous Corners a la derecha.  
 **Estado:** tendencia
 
 ---
@@ -128,16 +127,14 @@ Logo/nombre en Bold izquierda, contexto (fecha/subtitulo) en gris. Botones de ac
 
 **En referencias:** ninguna (pre-iOS 26)
 
-**Estrategia para apps nuevas:**
-
 | Componente | Acción | Variante |
 |------------|--------|----------|
-| Tab bar pill flotante | `.glassEffect(.regular)` en container squircle | Regular |
+| Tab bar pill flotante | `.glassEffect(.regular)` + `style: .continuous` | Regular |
 | NavBar custom | `.glassEffect(.regular)` si flota sobre contenido | Regular |
 | Sheets / popovers | Glass automático del sistema | Regular |
 | Section chips en cards | Mantener tintado opaco (content layer) | Sin glass |
 | Cards | Blanco opaco (content layer) | Sin glass |
-| Botón CTA | Evaluar `.buttonStyle(.glassProminent)` | Regular |
+| Botón CTA | `.buttonStyle(.glassProminent)` | Regular |
 | Botones secundarios | `.buttonStyle(.glass)` | Regular |
 
 **Fallback Reduce Transparency:** diseño base ya es 100% opaco — degrada perfectamente.
@@ -153,16 +150,16 @@ Logo/nombre en Bold izquierda, contexto (fecha/subtitulo) en gris. Botones de ac
 
 ## Sensación general
 
-**Palabras clave:** cálido, limpio, expresivo, datos-primero, squircle-everywhere
+**Palabras clave:** cálido, limpio, expresivo, datos-primero, Continuous Corners everywhere
 
 ---
 
 ## Decisiones de estilo
 
-1. **Squircle universal** — TODOS los bordes redondeados usan `style: .continuous` (superelipse). Sin excepciones. Es la decisión más transversal del sistema.
+1. **Continuous Corners universales** — `RoundedRectangle(cornerRadius:, style: .continuous)` en TODO. Sin excepciones. Es la decisión más transversal del sistema.
 2. **Fondo crema** en lugar de systemGroupedBackground — aporta calidez.
-3. **Tab bar pill flotante** en lugar de UITabBar estándar — preferencia explícita.
-4. **Section chips** como etiquetas de card — patrón original, usar en todas las apps.
+3. **Tab bar pill flotante** en lugar de UITabBar estándar.
+4. **Section chips** como etiquetas de card — usar en todas las apps.
 5. **Sin sombras** — toda la jerarquía por contraste de color.
 
 ---
@@ -170,7 +167,7 @@ Logo/nombre en Bold izquierda, contexto (fecha/subtitulo) en gris. Botones de ac
 ## Preguntas abiertas
 
 - [ ] ¿Glass en tab bar pill al adoptar iOS 26, o mantener opaco?
-- [ ] ¿El fondo crema aplica también en macOS (sidebar/window background)?
+- [ ] ¿El fondo crema aplica también en macOS?
 - [ ] ¿Los section chips van en todas las apps o solo en apps de datos?
 - [ ] Verificar ratio WCAG: crema `#F5F0EB` vs texto secundario `#8E8E93`
 
@@ -180,5 +177,5 @@ Logo/nombre en Bold izquierda, contexto (fecha/subtitulo) en gris. Botones de ac
 
 | Fecha | Fuente / App | Plataforma | Liquid Glass | Aportación principal |
 |-------|-------------|------------|--------------|---------------------|
-| 2026-05-31 | App de experimentos/hábitos (dark) | iOS | No | Dark mode negro puro + charcoal cards, pill button blanco, iconografía custom |
+| 2026-05-31 | App de experimentos/hábitos (dark) | iOS | No | Dark mode negro puro + charcoal cards, pill Continuous Corners, iconografía custom |
 | 2026-05-31 | Nutrie (nutrition tracker) | iOS | No | Crema background, tab bar pill flotante, section chips, display numerals, CTA full-width negro |
