@@ -2,14 +2,14 @@
 
 > Documento vivo. Actualizado por `steve-ui` con cada screenshot de referencia nuevo.  
 > Última actualización: —  
-> Referencias analizadas: 0
+> Referencias analizadas: 0 (iOS: 0, macOS: 0)
 
 ---
 
 ## Sistema de color
 
-| Token | Valor | Confirmado por | Estado |
-|-------|-------|---------------|--------|
+| Token | iOS | macOS | Estado |
+|-------|-----|-------|--------|
 | Background | — | — | sin definir |
 | Surface / cards | — | — | sin definir |
 | Acento primario | — | — | sin definir |
@@ -53,13 +53,13 @@
 
 ## Forma
 
-| Componente | Corner radius | Estado |
-|------------|--------------|--------|
-| Cards | — | sin definir |
-| Botón CTA primario | — | sin definir |
-| Botón secundario | — | sin definir |
-| Input fields | — | sin definir |
-| Chips / tags | — | sin definir |
+| Componente | iOS | macOS | Estado |
+|------------|-----|-------|--------|
+| Cards | — | — | sin definir |
+| Botón CTA primario | — | — | sin definir |
+| Botón secundario | — | — | sin definir |
+| Input fields | — | — | sin definir |
+| Chips / tags | — | — | sin definir |
 
 **Sensación de forma:** sharp / sutil / redondeada / pill — *sin definir*
 
@@ -78,7 +78,7 @@
 
 ---
 
-## Componentes
+## Componentes — iOS
 
 ### Botones
 - CTA primario: *sin definir*
@@ -92,10 +92,42 @@
 ### Cards
 - Estilo: *sin definir*
 
-### Navegación
-- Patrón: TabBar / NavigationBar / Sidebar / custom — *sin definir*
+### Navegación iOS
+- Patrón: TabBar / NavigationBar / custom — *sin definir*
 - Estilo de TabBar: *sin definir*
 - Estilo de NavBar: *sin definir*
+
+---
+
+## Componentes — macOS
+
+### Ventana
+- Material principal: *sin definir (e.g., NSVisualEffectView .sidebar, .hudWindow, regular)*
+- Título bar: *sin definir (inline / large / unificada con toolbar / oculta)*
+- Traffic lights: *sin definir (estándar / personalizados / ocultos)*
+
+### Sidebar
+- Presente: *sin definir*
+- Material: *sin definir (e.g., .sidebar, custom)*
+- Ancho: *sin definir*
+- Estilo de ítems: *sin definir (icon+label / icon-only / solo texto)*
+
+### Toolbar
+- Presente: *sin definir*
+- Estilo: *sin definir (compacto / espacioso / integrado con título)*
+- Ítems principales: *sin definir*
+
+### Inspector panel
+- Presente: *sin definir*
+
+### Popovers y sheets
+- Estilo: *sin definir*
+
+### Menús contextuales
+- Estilo: *sin definir*
+
+### Vibrancy
+- Uso: *sin definir (abundante / sutil / ausente)*
 
 ---
 
@@ -130,6 +162,6 @@
 
 ## Log de referencias
 
-| Fecha | Fuente / App | Aportación principal |
-|-------|-------------|---------------------|
-| — | — | — |
+| Fecha | Fuente / App | Plataforma | Aportación principal |
+|-------|-------------|------------|---------------------|
+| — | — | — | — |
