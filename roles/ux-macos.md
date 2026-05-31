@@ -55,7 +55,7 @@ Flows that respect macOS conventions: resizable windows, menu bar, keyboard-firs
 
 ## External design skills (phase 3)
 
-1. **`steve-ui`** — if user has visual references, run first to build `docs/STYLE_DNA.md` before any design work.
+1. **`jonny-ui-ux`** — if user has visual references, run first to build `docs/STYLE_DNA.md` before any design work.
 2. **`ui-ux-pro-max`** — design system / style (use SwiftUI stack in search).
 3. **`design-with-claude`** — `external/design-with-claude/commands/design-brief.md` + `accessibility-specialist.md`.
 4. **`libre-uiux`** — critique via `plugins/design-mastery` and `accessibility-compliance`.

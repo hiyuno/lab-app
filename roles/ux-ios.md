@@ -43,7 +43,7 @@ Flows that follow Apple HIG, with clear hierarchy and complete UI states.
 
 After drafting `docs/SCREENS.md`, Director may invoke:
 
-1. **`steve-ui`** — if user has visual references, run first to build `docs/STYLE_DNA.md` before any design work.
+1. **`jonny-ui-ux`** — if user has visual references, run first to build `docs/STYLE_DNA.md` before any design work.
 2. **`ui-ux-pro-max`** — design system / style (use SwiftUI stack in search).
 3. **`design-with-claude`** — `external/design-with-claude/commands/design-brief.md` + `mobile-specialist.md`, `accessibility-specialist.md`.
 4. **`libre-uiux`** — critique via `plugins/design-mastery` and `accessibility-compliance`.

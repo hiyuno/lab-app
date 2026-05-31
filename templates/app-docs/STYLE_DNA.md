@@ -1,6 +1,6 @@
 # Style DNA — [App Name]
 
-> Documento vivo. Actualizado por `steve-ui` con cada screenshot de referencia nuevo.  
+> Documento vivo. Actualizado por `jonny-ui-ux` con cada screenshot de referencia nuevo.  
 > Última actualización: —  
 > Referencias analizadas: 0 (iOS: 0, macOS: 0)  
 > **Versión target iOS:** sin definir | **Versión target macOS:** sin definir
@@ -66,10 +66,6 @@ NUNCA:        style: .circular
 r_inner = r_outer − padding          // siempre
 r_inner = max(r_outer − padding, 0)  // nunca negativo
 
-// Anidamiento múltiple:
-r_level_1 = r_outer − padding_1
-r_level_2 = r_level_1 − padding_2
-
 // iOS 26 — automático:
 ZStack { ConcentricRectangle().padding(padding) }
     .containerShape(.rect(cornerRadius: r_outer, style: .continuous))
@@ -81,7 +77,8 @@ ZStack { ConcentricRectangle().padding(padding) }
 |------------|---------|---------|---------|--------|
 | Card grande | — | — | r_outer − padding | sin definir |
 | Card grid | — | — | r_outer − padding | sin definir |
-| Botón CTA | pill 999pt | — | — | sin definir |
+| Botón CTA primario | pill 999pt | — | — | sin definir |
+| Botón CTA secundario | ~14pt | — | — | sin definir |
 | Section chips | pill | — | — | sin definir |
 | Tab bar container | pill | — | — | sin definir |
 | Tab activo inner bubble | pill | — | r_outer − padding (pill) | sin definir |
@@ -123,12 +120,12 @@ ZStack { ConcentricRectangle().padding(padding) }
 | Tab bar pill flotante | `Capsule().glassEffect(.regular)` | `.background(.ultraThinMaterial, in: Capsule())` | `UIVisualEffectView(UIBlurEffect(style: .systemUltraThinMaterial))` |
 | Tab activo inner bubble | `ConcentricRectangle().glassEffect()` | `Capsule().fill(.white.opacity(0.15))` | `UIVisualEffectView` + vibrancy |
 | NavBar / toolbar flotante | `RoundedRectangle(…, .continuous).glassEffect(.regular)` | `.background(.ultraThinMaterial)` + clip | `UINavigationBarAppearance` + blur |
-| Botón CTA | `.buttonStyle(.glassProminent)` | Fill con acento | Fill con acento |
-| Botón secundario | `.buttonStyle(.glass)` | `.background(.thinMaterial, in: Capsule())` | `UIVisualEffectView` + vibrancy |
+| Botón CTA primario | `.buttonStyle(.glassProminent)` | Fill con acento | Fill con acento |
+| Botón CTA secundario | `.buttonStyle(.glass)` | `.background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))` | `UIVisualEffectView` + clip |
 | Sidebar macOS | `RoundedRectangle(…).glassEffect(.regular)` | `.background(.ultraThinMaterial)` | `NSVisualEffectView(material: .sidebar, blendingMode: .behindWindow)` |
 | Sheet / modal | `Capsule().glassEffect(.clear)` + dimming | `.background(.regularMaterial)` | `UIVisualEffectView` regular |
 
-**ViewModifiers reutilizables:** `GlassCapsule`, `GlassActiveTab`, `GlassCompat` — ver skill `steve-ui`.
+**ViewModifiers reutilizables:** `GlassCapsule`, `GlassActiveTab`, `GlassCompat` — ver skill `jonny-ui-ux`.
 
 ---
 

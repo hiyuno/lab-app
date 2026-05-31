@@ -1,6 +1,6 @@
 # Style DNA — Lab App Reference
 
-> Documento vivo. Actualizado por `steve-ui` con cada screenshot de referencia nuevo.  
+> Documento vivo. Actualizado por `jonny-ui-ux` con cada screenshot de referencia nuevo.  
 > Última actualización: 2026-05-31  
 > Referencias analizadas: 7 (iOS: 7, macOS: 0)  
 > **Versión target:** sin definir ← *actualizar al crear cada proyecto*
@@ -131,59 +131,6 @@ Floating pill glass. Tab activo con inner bubble más claro. Ejemplo: GitHub iOS
 - Ícono inactivo: SF Symbol regular, blanco 80%
 
 ```swift
-LiquidTabBar(selection: $tab, items: tabs) // ver implementación en sección anterior
-```
-
-#### Variante B — Pill flotante activo-por-color (sin bubble)
-Floating pill opaco. Tab activo solo cambia color de ícono+label. Ejemplo: Watch app, Health app.
-
-**Especificaciones:**
-- Container: Capsule pill, ~56pt alto, padding ~8pt / ~6pt
-- Tab activo: sin bubble — solo icon+label en `accentColor` (naranja, azul, etc.)
-- Tab inactivo: icon+label blanco
-- Container: `#2C2C2E` opaco o `.thinMaterial`
-
-```swift
-struct CompactTabBar: View {
-    @Binding var selection: Int
-    let items: [(icon: String, selectedIcon: String, label: String, accent: Color)]
-
-    var body: some View {
-        HStack(spacing: 0) {
-            ForEach(Array(items.enumerated()), id: \.offset) { i, item in
-                let selected = selection == i
-                Button {
-                    withAnimation(.spring(duration: 0.2)) { selection = i }
-                } label: {
-                    VStack(spacing: 3) {
-                        Image(systemName: selected ? item.selectedIcon : item.icon)
-                            .font(.system(size: 20))
-                        Text(item.label)
-                            .font(.system(size: 10, weight: .medium))
-                    }
-                    .foregroundStyle(selected ? item.accent : .white.opacity(0.8))
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 8)
-                }
-                .buttonStyle(.plain)
-            }
-        }
-        .padding(.vertical, 6)
-        .padding(.horizontal, 8)
-        .background(.thinMaterial, in: Capsule())  // iOS 15+
-        // iOS 26+: .background { Capsule().glassEffect(.regular) }
-    }
-}
-```
-
-**Estado:** **confirmado** (ambas variantes)
-
----
-
-### Tab bar — Pill flotante con inner bubble activo (Variante A completa)
-
-```swift
-// LiquidTabBar — iOS 26+ Liquid Glass + iOS 15–25 Material fallback
 struct LiquidTabBar: View {
     @Binding var selection: Int
     let items: [(icon: String, selectedIcon: String, label: String)]
@@ -252,6 +199,48 @@ struct GlassActiveTab: ViewModifier {
 }
 ```
 
+#### Variante B — Pill flotante activo-por-color (sin bubble)
+Floating pill opaco. Tab activo solo cambia color de ícono+label. Ejemplo: Watch app, Health app.
+
+**Especificaciones:**
+- Container: Capsule pill, ~56pt alto, padding ~8pt / ~6pt
+- Tab activo: sin bubble — solo icon+label en `accentColor`
+- Container: `#2C2C2E` opaco o `.thinMaterial`
+
+```swift
+struct CompactTabBar: View {
+    @Binding var selection: Int
+    let items: [(icon: String, selectedIcon: String, label: String, accent: Color)]
+
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(Array(items.enumerated()), id: \.offset) { i, item in
+                let selected = selection == i
+                Button {
+                    withAnimation(.spring(duration: 0.2)) { selection = i }
+                } label: {
+                    VStack(spacing: 3) {
+                        Image(systemName: selected ? item.selectedIcon : item.icon)
+                            .font(.system(size: 20))
+                        Text(item.label)
+                            .font(.system(size: 10, weight: .medium))
+                    }
+                    .foregroundStyle(selected ? item.accent : .white.opacity(0.8))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.vertical, 6)
+        .padding(.horizontal, 8)
+        .background(.thinMaterial, in: Capsule())
+    }
+}
+```
+
+**Estado:** **confirmado** (ambas variantes)
+
 ---
 
 ### Botón CTA — Primario vs Secundario
@@ -262,78 +251,7 @@ struct GlassActiveTab: ViewModifier {
 | **Secundario** | `~14pt` Continuous Corners | `#2C2C2E` fill | Acción de apoyo, inline (e.g. "Start Pairing") |
 | **Glass** (iOS 26+) | cualquier forma | `.glassProminent` / `.glass` | Acciones en nav layer |
 
-```swift
-// Primario
-Button("Continuar") { }
-    .buttonStyle(.borderedProminent)
-    .clipShape(Capsule())
-
-// Secundario
-Button("Start Pairing") { }
-    .frame(maxWidth: .infinity)
-    .padding(.vertical, 16)
-    .background(Color(white: 0.17), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-    .foregroundStyle(.white)
-```
-
-**Estado:** **confirmado** (Watch app My Watch screen)
-
----
-
-### Settings-style grouped list
-
-Lista agrupada estilo Settings.app: `#1C1C1E` card, separadores `#3C3C3C`, icon badge + título + chevron.
-
-```swift
-GroupBox {
-    ForEach(rows) { row in
-        HStack(spacing: 12) {
-            RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .fill(row.color)
-                .frame(width: 30, height: 30)
-                .overlay { Image(systemName: row.icon).font(.system(size: 15)).foregroundStyle(.white) }
-            Text(row.title)
-            Spacer()
-            if let value = row.value { Text(value).foregroundStyle(.secondary) }
-            Image(systemName: "chevron.right").foregroundStyle(.tertiary).font(.footnote.weight(.semibold))
-        }
-        .padding(.vertical, 11)
-        if row.id != rows.last?.id { Divider() }
-    }
-}
-.backgroundStyle(Color(uiColor: .secondarySystemGroupedBackground))
-.clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-```
-
-**Estado:** tendencia (Settings app)
-
----
-
-### FAB search / acción flotante junto a tab bar
-
-Botón círculo flotante al lado del tab bar pill. Ejemplo: Health app (lupa).
-- Diámetro: ~52pt, Continuous Corners (circle)
-- Fill: `.ultraThinMaterial` o `#2C2C2E`
-- Icono: SF Symbol ~22pt
-
-```swift
-// Layout: HStack tab bar + FAB
-HStack(alignment: .center, spacing: 8) {
-    CompactTabBar(selection: $tab, items: items)
-    Spacer()
-    Button { /* search */ } label: {
-        Image(systemName: "magnifyingglass")
-            .font(.system(size: 20, weight: .medium))
-            .foregroundStyle(.white)
-            .frame(width: 52, height: 52)
-            .background(.thinMaterial, in: Circle())
-    }
-}
-.padding(.horizontal, 20)
-.padding(.bottom, 8)
-```
-
-**Estado:** tendencia (Health app)
+**Estado:** **confirmado**
 
 ---
 
@@ -349,6 +267,14 @@ Pill labels de color (Continuous Corners) en esquina superior izquierda de cards
 Black/Heavy ~60–70pt. Sin contenedor. Domina la card.  
 **Estado:** **confirmado**
 
+### FAB search / acción flotante junto a tab bar
+Botón círculo flotante al lado del tab bar pill. Diámetro ~52pt. Fill `.thinMaterial` o `#2C2C2E`.  
+**Estado:** tendencia (Health app)
+
+### Settings-style grouped list
+Lista agrupada: `#1C1C1E` card ~16pt Continuous Corners, separadores `#3C3C3C`, icon badge + título + chevron.  
+**Estado:** tendencia (Settings app)
+
 ---
 
 ## Liquid Glass (iOS 26 readiness)
@@ -357,8 +283,7 @@ Black/Heavy ~60–70pt. Sin contenedor. Domina la card.
 
 | Componente | Acción | Variante |
 |------------|--------|----------|
-| Tab bar pill (Variante A) | `Capsule().glassEffect(.regular)` | Regular |
-| Tab bar pill (Variante B) | `Capsule().glassEffect(.regular)` | Regular |
+| Tab bar pill (A y B) | `Capsule().glassEffect(.regular)` | Regular |
 | NavBar custom | `RoundedRectangle(…, .continuous).glassEffect(.regular)` si flota | Regular |
 | Section chips | Mantener tintado opaco (content layer) | Sin glass |
 | Cards | Opaco (content layer) | Sin glass |
@@ -374,16 +299,16 @@ Black/Heavy ~60–70pt. Sin contenedor. Domina la card.
 
 | Componente | iOS 26+ (Liquid Glass) | iOS 15–25 (Material) | iOS 13–14 (UIKit) |
 |---|---|---|---|
-| Tab bar pill | `Capsule().glassEffect(.regular)` | `.background(.ultraThinMaterial, in: Capsule())` | `UIVisualEffectView(UIBlurEffect(style: .systemUltraThinMaterial))` + `cornerCurve = .continuous` |
+| Tab bar pill | `Capsule().glassEffect(.regular)` | `.background(.ultraThinMaterial, in: Capsule())` | `UIVisualEffectView(UIBlurEffect(style: .systemUltraThinMaterial))` |
 | Tab activo bubble | `ConcentricRectangle().glassEffect()` | `Capsule().fill(.white.opacity(0.15))` | `UIVisualEffectView` + vibrancy |
 | NavBar flotante | `RoundedRectangle(…, .continuous).glassEffect(.regular)` | `.background(.ultraThinMaterial)` + clip | `UINavigationBarAppearance` + blur |
 | Botón CTA primario | `.buttonStyle(.glassProminent)` | Fill `#000000` / `#FFFFFF` | Fill sólido |
-| Botón CTA secundario | `.buttonStyle(.glass)` | `.background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14, .continuous))` | `UIVisualEffectView` + clip |
+| Botón CTA secundario | `.buttonStyle(.glass)` | `.background(.thinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))` | `UIVisualEffectView` + clip |
 | FAB search | `Circle().glassEffect(.regular)` | `.background(.thinMaterial, in: Circle())` | `UIVisualEffectView` circular |
 | Section chips | Opaco tintado (content layer) | Opaco tintado | Opaco tintado |
 | Cards | Opaco (content layer) | Opaco | Opaco |
 
-**ViewModifiers reutilizables:** `GlassCapsule`, `GlassActiveTab`, `GlassCompat` — ver `.cursor/skills/steve-ui/SKILL.md`.
+**ViewModifiers reutilizables:** `GlassCapsule`, `GlassActiveTab`, `GlassCompat` — ver `.cursor/skills/jonny-ui-ux/SKILL.md`.
 
 ---
 
@@ -403,11 +328,11 @@ Black/Heavy ~60–70pt. Sin contenedor. Domina la card.
 
 1. **Continuous Corners universales** — `style: .continuous` en absolutamente todo.
 2. **r_inner = r_outer − padding** — regla obligatoria en todos los contenedores anidados. iOS 26: `ConcentricRectangle`.
-3. **Fondo crema** `#F5F0EB` en lugar de systemGroupedBackground (light mode).
+3. **Fondo crema** `#F5F0EB` en lugar de systemGroupedBackground.
 4. **Tab bar pill flotante** — dos variantes: A (inner bubble) o B (activo-por-color). No UITabBar estándar.
 5. **Section chips** como etiquetas de card.
 6. **Sin sombras** — jerarquía por contraste de color.
-7. **CTA secundario** — `#2C2C2E` fill + ~14pt Continuous Corners (no pill). Distinto del CTA primario pill.
+7. **CTA secundario** — `#2C2C2E` fill + ~14pt Continuous Corners (no pill).
 
 ---
 
@@ -416,7 +341,7 @@ Black/Heavy ~60–70pt. Sin contenedor. Domina la card.
 - [ ] ¿Versión target mínima para el primer proyecto?
 - [ ] ¿Tab bar Variante A (bubble) o Variante B (activo-por-color) como default?
 - [ ] ¿Gradiente de fondo (Health-style) para pantallas Summary/Dashboard?
-- [ ] ¿FAB search junto al tab bar o barra de búsqueda inline?
+- [ ] ¿FAB search junto al tab bar o búsqueda inline?
 - [ ] ¿Fondo crema aplica también en macOS?
 - [ ] Verificar WCAG: crema `#F5F0EB` vs texto secundario `#8E8E93`
 
@@ -430,6 +355,6 @@ Black/Heavy ~60–70pt. Sin contenedor. Domina la card.
 | 2026-05-31 | Nutrie (nutrition tracker) | iOS | No | Crema bg, section chips, display numerals, CTA negro |
 | 2026-05-31 | GitHub iOS — tab bar liquid | iOS | Parcial (simulado) | Floating pill glass + inner active bubble (r_inner confirmado) |
 | 2026-05-31 | iOS Settings.app | iOS | No | Grouped list ~16pt, icon badges, `#1C1C1E` cards, separadores sutiles |
-| 2026-05-31 | Apple Watch.app — Face Gallery | iOS | No | Compact 3-tab pill, activo-por-color (naranja), confirmación pill tab bar |
+| 2026-05-31 | Apple Watch.app — Face Gallery | iOS | No | Compact 3-tab pill, activo-por-color (naranja), Variante B confirmada |
 | 2026-05-31 | Apple Watch.app — My Watch | iOS | No | CTA secundario `#2C2C2E` ~14pt Continuous Corners (no pill) |
 | 2026-05-31 | Health.app — Summary | iOS | No | Gradiente bg naranja→púrpura, FAB search junto a tab bar, activo-por-color azul |
