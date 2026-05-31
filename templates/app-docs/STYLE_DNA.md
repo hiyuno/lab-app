@@ -67,7 +67,7 @@
 
 ## Profundidad y elevación
 
-**Sistema:** plano / sombras sutiles / elevación marcada / blur·glass — *sin definir*
+**Sistema:** plano / sombras sutiles / elevación marcada / Liquid Glass — *sin definir*
 
 | Nivel | Tratamiento | Cuándo usar |
 |-------|-------------|-------------|
@@ -75,6 +75,37 @@
 | Cards | — | — |
 | Sheets / modales | — | — |
 | Overlays | — | — |
+
+---
+
+## Liquid Glass
+
+> Referencia: iOS 26 / macOS Tahoe. Regla principal: usar SOLO en navigation layer, NUNCA en content layer.
+
+**Adopción:** completa / parcial / ninguna — *sin definir*
+
+### Variante
+
+| Componente | Variante | Estado |
+|------------|----------|--------|
+| Tab bar | Regular / Clear | sin definir |
+| NavigationBar / Toolbar | Regular / Clear | sin definir |
+| Sidebar (macOS/iPad) | Regular / Clear | sin definir |
+| Botones CTA | .glassProminent / .glass | sin definir |
+| Botones secundarios | .glass / estándar | sin definir |
+| Sheets / Popovers | Regular / Clear | sin definir |
+
+### Reglas aplicadas a esta app
+
+- Navigation layer usa glass: *sin definir*
+- Content layer libre de glass: *sin definir*
+- Stacking evitado: *sin definir*
+- Tab bar encoge en scroll: *sin definir*
+
+### Accesibilidad
+
+- Fallback opaco diseñado (Reduce Transparency): *sin definir*
+- Contraste verificado para Increase Contrast: *sin definir*
 
 ---
 
@@ -95,39 +126,32 @@
 ### Navegación iOS
 - Patrón: TabBar / NavigationBar / custom — *sin definir*
 - Estilo de TabBar: *sin definir*
-- Estilo de NavBar: *sin definir*
+- Tab bar scroll behavior: *sin definir*
 
 ---
 
 ## Componentes — macOS
 
 ### Ventana
-- Material principal: *sin definir (e.g., NSVisualEffectView .sidebar, .hudWindow, regular)*
-- Título bar: *sin definir (inline / large / unificada con toolbar / oculta)*
-- Traffic lights: *sin definir (estándar / personalizados / ocultos)*
+- Material principal: *sin definir*
+- Título bar: *sin definir*
+- Traffic lights: *sin definir*
 
 ### Sidebar
 - Presente: *sin definir*
-- Material: *sin definir (e.g., .sidebar, custom)*
+- Material / lensing: *sin definir*
 - Ancho: *sin definir*
-- Estilo de ítems: *sin definir (icon+label / icon-only / solo texto)*
+- Estilo de ítems: *sin definir*
 
 ### Toolbar
 - Presente: *sin definir*
-- Estilo: *sin definir (compacto / espacioso / integrado con título)*
-- Ítems principales: *sin definir*
+- Estilo: *sin definir*
 
 ### Inspector panel
 - Presente: *sin definir*
 
-### Popovers y sheets
-- Estilo: *sin definir*
-
-### Menús contextuales
-- Estilo: *sin definir*
-
 ### Vibrancy
-- Uso: *sin definir (abundante / sutil / ausente)*
+- Uso: *sin definir*
 
 ---
 
@@ -154,14 +178,12 @@
 
 ## Preguntas abiertas
 
-<!-- Conflictos pendientes de resolver con el usuario -->
-
 - [ ] *Ninguna todavía — comparte tu primer screenshot de referencia para empezar*
 
 ---
 
 ## Log de referencias
 
-| Fecha | Fuente / App | Plataforma | Aportación principal |
-|-------|-------------|------------|---------------------|
-| — | — | — | — |
+| Fecha | Fuente / App | Plataforma | Liquid Glass | Aportación principal |
+|-------|-------------|------------|--------------|---------------------|
+| — | — | — | — | — |
