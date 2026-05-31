@@ -6,6 +6,7 @@ Used in **phase 3 — Design** after Product Spec. The Director assigns UX + Con
 
 | Skill | Source | When to use |
 |-------|--------|-------------|
+| `jonny-ui-ux` | Bundled (`.cursor/skills/jonny-ui-ux/`) | Analiza screenshots de referencia → acumula `docs/STYLE_DNA.md`; invocar **primero** en fase 3 si el usuario tiene referencias visuales |
 | `ui-ux-pro-max` | [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | Design system generation, palettes, typography, UX rules; run `scripts/search.py` for stack `swiftui` |
 | `ios-mac-ui-designer` | Bundled (`.cursor/skills/ios-mac-ui-designer/`) | Apple HIG-native UI for iOS, iPadOS, macOS — screens, flows, navigation patterns, design review |
 | `design-with-claude` | [design-with-claude](https://github.com/imsaif/design-with-claude) | Brief routing to specialists (`design-brief`, mobile, accessibility, motion, forms, etc.) |
@@ -20,6 +21,27 @@ Used in **phase 3 — Design** after Product Spec. The Director assigns UX + Con
 | Brand + Content | `roles/brand-content.md` |
 
 **Order:** Lab role defines platform (HIG, SwiftUI) → external skill adds design intelligence → output goes to `docs/SCREENS.md` and `docs/COPY.md`.
+
+## jonny-ui-ux — acumulación de estilo personal
+
+`jonny-ui-ux` convierte screenshots de referencia en un documento vivo (`docs/STYLE_DNA.md`) que actúa como guía de estilo personal del usuario. Es el punto de partida visual de cualquier app nueva.
+
+**Cuándo invocarlo:**
+- Al inicio de fase 3, antes de cualquier trabajo de diseño, si el usuario tiene referencias
+- Cada vez que el usuario comparte nuevas referencias durante el proceso
+- Cuando el UX designer necesita dirección visual concreta antes de proponer pantallas
+- Fuera de cualquier fase específica — el usuario puede ir acumulando su estilo en cualquier momento
+
+**Cómo funciona:**
+1. Usuario comparte screenshot(s) de apps que le gustan
+2. `jonny-ui-ux` extrae: paleta de colores, tipografía, espaciado, forma, profundidad, componentes, iconografía
+3. Acumula los hallazgos en `docs/STYLE_DNA.md` (vive junto a `SCREENS.md` y `COPY.md`)
+4. Con cada nueva referencia, el documento se vuelve más específico y más fiel al gusto real
+5. Cuando hay conflicto entre referencias, pregunta al usuario antes de sobreescribir
+6. Antes de diseñar, `ios-mac-ui-designer` y `ui-ux-pro-max` leen `STYLE_DNA.md` para alinear el output visual
+
+**Output:** `docs/STYLE_DNA.md`  
+**Plantilla:** `templates/app-docs/STYLE_DNA.md`
 
 ## design-with-claude — recommended specialists (iOS/macOS)
 
@@ -50,9 +72,9 @@ Under `external/LibreUIUX-Claude-Code/`:
 ## Director orchestration (phase 3)
 
 1. Confirm P0 tickets and `docs/PRD.md` exist.
-2. Assign UX role (`ux-ios` or `ux-macos`).
-3. Invoke `ui-ux-pro-max` for design-system / style direction (product type + `swiftui` stack).
-4. Invoke `ios-mac-ui-designer` for HIG-native screens, navigation, and component choices (`docs/SCREENS.md`).
+2. If user has visual references: invoke `jonny-ui-ux` → `docs/STYLE_DNA.md`.
+3. Invoke `ui-ux-pro-max` for design-system / style direction (product type + `swiftui` stack); pass `STYLE_DNA.md` as context if available.
+4. Invoke `ios-mac-ui-designer` for HIG-native screens and navigation (`docs/SCREENS.md`); read `STYLE_DNA.md` for visual constraints.
 5. Invoke `design-with-claude` with `design-brief` for specialist routing.
 6. Optional: `libre-uiux` for critique before Engineer handoff.
 7. Assign `brand-content` for `docs/COPY.md`.

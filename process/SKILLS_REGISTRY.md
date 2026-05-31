@@ -34,6 +34,7 @@ Skills live in `.cursor/skills/<name>/`. After `install-agents.sh` or `new-app.s
 
 | Skill | When | Output |
 |-------|------|--------|
+| `jonny-ui-ux` | Al inicio de fase 3; cuando el usuario tiene screenshots de referencia | `docs/STYLE_DNA.md` |
 | `ui-ux-pro-max` | Design system, colors, typography; stack `swiftui` in scripts | direction for `SCREENS.md` |
 | `ios-mac-ui-designer` | Apple HIG, SwiftUI patterns, iOS/iPadOS/macOS screen design and review | `docs/SCREENS.md` |
 | `design-with-claude` | Brief routing, mobile/accessibility specialists | `docs/SCREENS.md` |
@@ -86,7 +87,7 @@ Skills live in `.cursor/skills/<name>/`. After `install-agents.sh` or `new-app.s
 ### App Store review skills (invoke one at a time)
 
 | Skill | Topic |
-|-------|--------|
+|-------|-------|
 | `privacy-manifest-check` | PrivacyInfo.xcprivacy |
 | `account-deletion-check` | Account deletion |
 | `privacy-policy-check` | Policy URL |
